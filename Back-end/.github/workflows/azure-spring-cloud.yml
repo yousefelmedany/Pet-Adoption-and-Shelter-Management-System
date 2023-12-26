@@ -1,0 +1,38 @@
+name: AzureSpringCloud
+on: push
+env:
+  ASC_PACKAGE_PATH: ${{ github.workspace }}
+  JAVA_VERSION: 17
+  AZURE_SUBSCRIPTION: 82e64610-8d3b-4a1f-9c80-f41a52a4f12a
+
+jobs:
+  deploy_to_production:
+    runs-on: ubuntu-latest
+    name: deploy to production with artifact
+    steps:
+      - name: Checkout Github Action
+        uses: actions/checkout@v2
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: maven build, clean
+        run: |
+          mvn clean package -DskipTests
+
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: deploy to production with artifact
+        uses: azure/spring-cloud-deploy@v1
+        with:
+          azure-subscription: ${{ env.AZURE_SUBSCRIPTION }}
+          action: Deploy
+          service-name: galaxy
+          app-name: galaxy
+          use-staging-deployment: false
+          package: ${{ env.ASC_PACKAGE_PATH }}/**/*.jar
