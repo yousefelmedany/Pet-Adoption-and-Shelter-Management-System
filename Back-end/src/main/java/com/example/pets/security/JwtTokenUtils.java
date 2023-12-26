@@ -1,6 +1,6 @@
 package com.example.pets.security;
 
-import com.example.pets.Service.IUserService;
+import com.example.pets.service.IUserService;
 import io.jsonwebtoken.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,9 +92,8 @@ public class JwtTokenUtils {
 
 	public boolean isTokenValid(String token, AppUserDetails userDetails) {
 		String username = getUserNameFromToken(token);
-		boolean isUserNameEqual = username.equalsIgnoreCase(userDetails.getUsername()) ;
 		boolean isUserNameEqualMail = username.equalsIgnoreCase(userDetails.getEmail()) ;
-		return ((isUserNameEqual||isUserNameEqualMail) && !isTokenExpired(token));
+		return ((isUserNameEqualMail) && !isTokenExpired(token));
 	}
 
 	public boolean isTokenExpired(String token) {

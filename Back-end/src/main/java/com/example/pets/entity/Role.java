@@ -11,11 +11,23 @@ import lombok.*;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id ;
-    public Role(String name){
-        this.name = name;
-    }
-    @Column
-    private String name;
+    private Long Id;
 
+    public Role(String name) {
+        this.name = Roles.valueOf(name);
+    }
+
+    @Column
+    private Roles name;
+}
+
+enum Roles {
+    STAFF("STAFF"),
+    MANAGER("MANAGER"),
+    ADOPTER("ADOPTER"),
+    ;
+
+    Roles(String staff) {
+
+    }
 }

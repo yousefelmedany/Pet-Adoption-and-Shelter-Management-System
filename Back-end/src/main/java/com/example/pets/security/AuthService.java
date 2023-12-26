@@ -28,7 +28,8 @@ public class AuthService {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         this.appUserDetails = userDetails;
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        TokenInfo tokenInfo = createLoginToken(login, userDetails.getId());
+
+        TokenInfo tokenInfo = createLoginToken(login, userDetails.getEmail());
 
         JWTResponseDto jwtResponseDto = JWTResponseDto.builder()
                 .accessToken(tokenInfo.getAccessToken())
@@ -41,11 +42,11 @@ public class AuthService {
         return appUserDetails;
     }
 
-    public TokenInfo createLoginToken(String userName, int userId) {
+    public TokenInfo createLoginToken(String userName, String userId) {
         String accessTokenId = UUID.randomUUID().toString();
-        String accessToken = JwtTokenUtils.generateToken(userName, String.valueOf(userId), false);
+        String accessToken = JwtTokenUtils.generateToken(userName, userId, false);
         String refreshTokenId = UUID.randomUUID().toString();
-        String refreshToken = JwtTokenUtils.generateToken(userName, String.valueOf(userId), true);
+        String refreshToken = JwtTokenUtils.generateToken(userName, userId, true);
         return new TokenInfo(accessToken, refreshToken);
     }
 
