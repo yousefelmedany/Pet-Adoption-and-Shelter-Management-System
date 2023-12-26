@@ -46,11 +46,6 @@ public class UserService implements IUserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepo.findByEmail(username);
-        if (user.isEmpty()) {
-            user = userRepo.findByEmail(username);
-            if (user.isEmpty())
-                throw new UsernameNotFoundException("This User Not found with selected user name :- " + username);
-        }
         return new AppUserDetails(user.get());
     }
 
@@ -76,8 +71,6 @@ public class UserService implements IUserService, UserDetailsService {
     public User getUserByEmail(String email) {
         return userRepo.findByEmail(email).orElse(null);
     }
-    
-
     @Override
     public List<String> getAllUsersEmail() {
         List<String> emails = new ArrayList<>();

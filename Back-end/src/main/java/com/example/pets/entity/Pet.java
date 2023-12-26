@@ -25,6 +25,9 @@ public class Pet {
     private String gender;
     private String age;
     private String healthStatus;
+    private String training;
+    private String vaccination;
+    private String spayNeuter;
     @Lob
     @Column(name = "image", columnDefinition = "longblob")
     private byte[] image;
@@ -38,6 +41,10 @@ public class Pet {
     @ManyToOne
     @JoinColumn(name = "adopterId")
     private Adopter adopter;
+
+    @ManyToOne
+    @JoinColumn(name = "shelterId")
+    private Shelter shelter;
     private Status status;
     private LocalDate date;
 }
