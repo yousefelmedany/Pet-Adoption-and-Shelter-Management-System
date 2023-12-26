@@ -45,7 +45,6 @@ public class Pet {
     @ManyToOne
     @JoinColumn(name = "shelterId")
     private Shelter shelter;
-
     private Status status;
     private LocalDate date;
 }

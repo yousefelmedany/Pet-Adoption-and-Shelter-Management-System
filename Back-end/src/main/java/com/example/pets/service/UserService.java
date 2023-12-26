@@ -71,8 +71,6 @@ public class UserService implements IUserService, UserDetailsService {
     public User getUserByEmail(String email) {
         return userRepo.findByEmail(email).orElse(null);
     }
-
-
     @Override
     public List<String> getAllUsersEmail() {
         List<String> emails = new ArrayList<>();

@@ -24,7 +24,6 @@ public class Shelter {
 
     @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
     private List<Staff> staffs;
-
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL)
     private List<Pet> pets;
 }

@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user_table",uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")})
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
