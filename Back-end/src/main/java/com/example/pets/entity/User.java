@@ -8,8 +8,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "user_table",uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email")
-})
+        @UniqueConstraint(columnNames = "email")})
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {

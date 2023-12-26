@@ -1,4 +1,4 @@
-package com.example.pets.config;
+package com.example.pets.security.config;
 
 import com.example.pets.exceptions.CustomAccessDeniedHandler;
 import com.example.pets.security.AuthFilter;
@@ -26,7 +26,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public static String[] PUBLIC_END_POINTS = {"/auth/**","/sendMail","/news/allnews", "/sector/all","/image/getimgbyname/**",};
+    public static String[] PUBLIC_END_POINTS = {"/auth/**","/sendMail","/**"};
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -58,11 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(PUBLIC_END_POINTS).permitAll() // Public endpoints
-//                .antMatchers("/admin/**").hasAuthority("ADMIN") // Allow USER access to /galaxy/**
-//                .antMatchers("/galaxy/user/**").hasAuthority("ADMIN") // Allow ADMIN access to /galaxy/**
-//                .antMatchers("/galaxy/**").hasAnyAuthority("admin","EMPLOYEE","MANAGER") // Allow ADMIN access to /galaxy/**
-
+                .antMatchers(PUBLIC_END_POINTS).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(authFilter(), UsernamePasswordAuthenticationFilter.class);

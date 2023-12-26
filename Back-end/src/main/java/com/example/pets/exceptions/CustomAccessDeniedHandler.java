@@ -13,6 +13,6 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException {
         response.setStatus(HttpStatus.FORBIDDEN.value());
-        response.getWriter().write("Access Denied: You don't have permission to access this resource." + accessDeniedException.getMessage());
+        response.getWriter().write("Access Denied: You don't have permission to access this resource. " + accessDeniedException.getMessage());
     }
 }
