@@ -8,9 +8,12 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.UUID;
 
 @Service
@@ -23,14 +26,11 @@ public class AuthService {
     private AppUserDetails appUserDetails;
 
     public ResponseCookie login(String login, String password) {
-        Authentication authentication = authManager.authenticate(
-                new UsernamePasswordAuthenticationToken(login, password));
+        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(login, password));
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         this.appUserDetails = userDetails;
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        TokenInfo tokenInfo = createLoginToken(login, userDetails.getEmail());
-
+        TokenInfo tokenInfo = createLoginToken(login, userDetails.getEmail(), userDetails.getAuthorities());
         JWTResponseDto jwtResponseDto = JWTResponseDto.builder()
                 .accessToken(tokenInfo.getAccessToken())
                 .refreshToken(tokenInfo.getRefreshToken())
@@ -42,11 +42,11 @@ public class AuthService {
         return appUserDetails;
     }
 
-    public TokenInfo createLoginToken(String userName, String userId) {
+    public TokenInfo createLoginToken(String userName, String userId, Collection authorities) {
         String accessTokenId = UUID.randomUUID().toString();
-        String accessToken = JwtTokenUtils.generateToken(userName, userId, false);
+        String accessToken = JwtTokenUtils.generateToken(userName, userId, false,authorities);
         String refreshTokenId = UUID.randomUUID().toString();
-        String refreshToken = JwtTokenUtils.generateToken(userName, userId, true);
+        String refreshToken = JwtTokenUtils.generateToken(userName, userId, true,authorities);
         return new TokenInfo(accessToken, refreshToken);
     }
 

@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,7 @@ public class Staff {
     private String name;
     private String phone;
     private String address;
-    private Date birthDate;
+    private LocalDate birthDate;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "managedShelterId", referencedColumnName = "shelterId")
     private Shelter shelter;
@@ -25,7 +26,4 @@ public class Staff {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "workAtShelterId", referencedColumnName = "shelterId")
     private Shelter staff;
-
-    @OneToOne(mappedBy = "staff", cascade = CascadeType.ALL)
-    private User user;
 }

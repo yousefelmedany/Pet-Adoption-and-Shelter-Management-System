@@ -20,8 +20,4 @@ public class Adopter {
             , orphanRemoval = true
             , fetch = FetchType.LAZY)
     private List<Pet> pets;
-
-    @OneToOne(mappedBy = "adopter", cascade = CascadeType.ALL)
-    private User user;
-
 }

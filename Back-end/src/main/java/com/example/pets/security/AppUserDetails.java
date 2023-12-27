@@ -1,6 +1,7 @@
 package com.example.pets.security;
 
 import com.example.pets.entity.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,12 +13,13 @@ import java.util.*;
 
 @Setter
 @Getter
+@AllArgsConstructor
 public class AppUserDetails implements UserDetails{
 
     private String password;
     private String email;
     private Set<GrantedAuthority> authorities;
-
+    private Long personId;
     private boolean isEnabled;
 
 
@@ -26,10 +28,10 @@ public class AppUserDetails implements UserDetails{
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.isEnabled = user.isEnabled();
-
         authorities = new HashSet<>();
+        this.personId = user.getPersonId();
         if (!user.getRoles().isEmpty()) {
-            user.getRoles().forEach(role -> authorities.add((new SimpleGrantedAuthority(role.toString()))));
+            user.getRoles().forEach(role -> authorities.add((new SimpleGrantedAuthority(role.getName()))));
         }
     }
 
@@ -50,17 +52,17 @@ public class AppUserDetails implements UserDetails{
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override

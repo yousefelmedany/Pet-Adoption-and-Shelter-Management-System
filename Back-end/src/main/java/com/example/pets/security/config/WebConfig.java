@@ -13,17 +13,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 @Log4j2
 public class WebConfig implements WebMvcConfigurer{
-
-    String [] ALLOWED_ORIGINS = {
-            "http://localhost:4200",
-    };
-
+    String [] ALLOWED_ORIGINS = {"http://localhost:4200"};
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(10);
     }
-
-
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -32,6 +26,5 @@ public class WebConfig implements WebMvcConfigurer{
                 .allowedHeaders("Origin", "Content-Type", "Accept", "Authorization", "X-Requested-With")
                 .exposedHeaders("Authorization")
                 .allowCredentials(true);
-//                .maxAge(3600); // Adjust the maxAge value as needed (in seconds)
     }
 }

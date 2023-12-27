@@ -2,6 +2,7 @@ package com.example.pets.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,10 +16,8 @@ public class GlobalHandling {
 
     @ExceptionHandler(DisabledException.class)
     public ResponseEntity<?> handleDisabledException() {
-
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("This Account is Disabled");
     }
-
 
     @ExceptionHandler(LockedException.class)
     public ResponseEntity<?> handleLockedException() {
@@ -35,13 +34,13 @@ public class GlobalHandling {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleException(Exception ex) {
 
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong" + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong :" + ex.getMessage());
     }
 
     @ExceptionHandler(InsufficientAuthenticationException.class)
     public ResponseEntity<?> handleInsufficientAuthenticationException(InsufficientAuthenticationException ex) {
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Insufficient Authentication" + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Insufficient Authentication : " + ex.getMessage());
     }
 
     @ExceptionHandler(ProviderNotFoundException.class)
@@ -82,14 +81,17 @@ public class GlobalHandling {
 
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<?> handleAuthenticationException(AuthenticationException ex) {
-
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication Exception" + ex.getMessage());
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException ex) {
-
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Illegal Argument Exception   " + ex.getMessage() + "   " + Arrays.toString(ex.getStackTrace()) + "   " + ex.getCause() + "  : " + ex.getLocalizedMessage());
     }
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Access Denied Exception   " + ex.getMessage() + "   " + Arrays.toString(ex.getStackTrace()) + "   " + ex.getCause() + "  : " + ex.getLocalizedMessage());
+    }
+
 }
 
