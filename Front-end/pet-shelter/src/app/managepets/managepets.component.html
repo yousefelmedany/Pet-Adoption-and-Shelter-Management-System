@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="top">
+   <button class="btn btn-primary">Add <i class="fa-solid fa-plus"></i></button>
+    </div>
+ <div *ngFor="let pet of pets">   
+<div class="card">
+    <div class="bg-image hover-overlay" >
+      <img src="https://www.courierpostonline.com/gcdn/presto/2020/02/24/PCHH/eaa80fe0-5fcb-483b-ad10-59fc36fa95fc-GettyImages-1092587292.jpg?width=660&height=440&fit=crop&format=pjpg&auto=webp" class="img-fluid" style="width: 40vw;"/>
+      <a href="#!">
+        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      </a>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{pet.petName}}</h5>
+      <p class="card-text"><strong>Specie: </strong>{{pet.species}}</p>
+      <hr>
+      <p class="card-text"><strong>Breed: </strong>{{pet.breed}}</p>
+      <hr>
+      <p class="card-text"><strong>Color: </strong>{{pet.color}}</p>
+      <hr>
+      <p class="card-text"><strong>Gender: </strong>{{pet.gender}}</p>
+      <hr>
+      <p class="card-text"><strong>Age: </strong>{{pet.age}}</p>
+      <hr>
+      <p class="card-text"><strong>Health Status: </strong>{{pet.healthStatus}}</p>
+      <hr>
+      <p class="card-text"><strong>Training: </strong>{{pet.training}}</p>
+      <hr>
+      <p class="card-text"><strong>Vaccination: </strong>{{pet.vaccination}}</p>
+      <hr>
+      <p class="card-text"><strong>Spay Neuter: </strong>{{pet.spayNeuter}}</p>
+      <hr>
+      <p class="card-text"><strong>Behaviour: </strong>{{pet.behavior}}</p>
+      <hr>
+      <p class="card-text"><strong>Specie: </strong>{{pet.species}}</p>
+      <hr>
+      <div class="btn">
+      <button class="btn btn-dark">Edit<i class="fa-solid fa-pen"></i></button>
+      <button class="btn btn-danger">Remove<i class="fa-solid fa-trash"></i></button>
+    </div>
+    </div>
+  </div>
+</div>
+</div>

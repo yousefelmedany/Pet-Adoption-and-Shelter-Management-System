@@ -1,5 +1,6 @@
 package com.example.pets.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,7 +24,9 @@ public class Shelter {
     private Staff shelterAdmin;
 
     @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Staff> staffs;
     @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Pet> pets;
 }

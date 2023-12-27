@@ -1,6 +1,7 @@
 package com.example.pets.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,7 @@ public class Pet {
             , cascade = CascadeType.ALL
             , orphanRemoval = true
             , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Document> documents;
 
     @ManyToOne
@@ -45,12 +47,8 @@ public class Pet {
     @ManyToOne
     @JoinColumn(name = "shelterId")
     private Shelter shelter;
-    private Status status;
+    private String status;
     private LocalDate date;
 }
 
-enum Status {
-    AVAILABLE,
-    APPROVED,
-    PENDING,
-}
+

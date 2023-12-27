@@ -1,5 +1,6 @@
 package com.example.pets.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,5 +20,6 @@ public class Adopter {
             , cascade = CascadeType.ALL
             , orphanRemoval = true
             , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Pet> pets;
 }
