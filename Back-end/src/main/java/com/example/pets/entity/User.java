@@ -21,19 +21,14 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles" ,
             joinColumns = @JoinColumn(name = "email"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
     @OrderColumn(name = "Id")
     @Column
     private Set<Role> roles = new HashSet<>();
     @Column
     private boolean isEnabled = false;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adopterId", referencedColumnName = "adopterId")
-    private Adopter adopter;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "staffId", referencedColumnName = "staffId")
-    private Staff staff;
+    @Column
+    private Long personId;
 
 }

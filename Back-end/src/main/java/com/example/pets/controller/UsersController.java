@@ -16,32 +16,40 @@ public class UsersController {
     @Autowired
     private IUserService service;
 
-    @PreAuthorize("hasAuthority('admin') or hasAuthority('EMPLOYEE') or hasAuthority('MANAGER')")
     @GetMapping("/getUserByRole/{role}")
     public List<User> getUserByRole(@PathVariable String role) {
         System.out.println(role);
         return service.getUserByRole(role);
     }
-    @PreAuthorize("hasAuthority('admin') or hasAuthority('EMPLOYEE') or hasAuthority('MANAGER')")
     @DeleteMapping("/deleteAllUsers")
     public void deleteAllUsers() {
         service.deleteAllUsers();
     }
-    @PreAuthorize("hasAuthority('admin') or hasAuthority('EMPLOYEE') or hasAuthority('MANAGER')")
     @GetMapping("/getAllUsers")
     public List<User> getAllUsers() {
         List<User> users =service.getAllUsers();
         return users;
     }
-    @PreAuthorize("hasAuthority('admin') or hasAuthority('EMPLOYEE') or hasAuthority('MANAGER') or hasAuthority('USER')")
     @GetMapping("/getUserByEmail")
     public User getUserByEmail(@Param("email") String email) {
         return service.getUserByEmail(email);
     }
 
-    @PreAuthorize("hasAuthority('admin') or hasAuthority('EMPLOYEE') or hasAuthority('MANAGER') or hasAuthority('USER')")
     @GetMapping("/getAllUsersEmail")
     public List<String> getAllUsersEmail() {
         return service.getAllUsersEmail();
     }
+
+    @PreAuthorize("hasAuthority('MANAGER')")
+    @GetMapping("/manager")
+    public String manager() {
+        return "Manager";
+    }
+    @PreAuthorize("hasAuthority('ADOPTER') or hasAuthority('STAFF')")
+    @GetMapping("/employee")
+    public String employee() {
+        return "employee";
+    }
+
+
 }

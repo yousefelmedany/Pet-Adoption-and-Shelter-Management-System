@@ -1,6 +1,8 @@
 package com.example.pets.controller;
 
+import com.example.pets.dto.APIResponse;
 import com.example.pets.dto.LoginRequestDto;
+import com.example.pets.dto.RegistrationDto;
 import com.example.pets.dto.UserInfoDTO;
 import com.example.pets.entity.Role;
 import com.example.pets.entity.User;
@@ -55,26 +57,22 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User newUser) {
-        if (service.existsByEmail(newUser.getEmail())) {
-            return ResponseEntity.badRequest().body("Error: Email is already in use!");
+    public ResponseEntity<?> register(@RequestBody RegistrationDto newUser) {
+        try {
+            service.createUser(newUser);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new APIResponse<String>(0, e.getMessage()));
         }
-        newUser.setEnabled(true);
-        Set<Role> roles1 = newUser.getRoles();
-        Role role;
-        if (roles1.isEmpty()) {
-            role = service.findRoleByName("USER");
-            if (role == null) role = service.createRole(new Role("USER"));
-        } else {
-            role = roles1.iterator().next();
-        }
-        Role find_role = service.findRoleByName(String.valueOf(role.getName()));
-        if (find_role == null) service.createRole(role);
-        newUser.setRoles(Set.of(role));
-        service.createUser(newUser);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(
+                new APIResponse<String>(1, "User created successfully")
+        );
     }
 
 
+
+    @GetMapping("/getMe")
+    public ResponseEntity<?> getMe(@RequestBody UserInfoDTO userInfoDTO) {
+        return ResponseEntity.ok().body(service.getMe(userInfoDTO));
+    }
 }
 

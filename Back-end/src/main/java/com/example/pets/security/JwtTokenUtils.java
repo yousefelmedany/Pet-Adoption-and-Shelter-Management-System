@@ -6,14 +6,15 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 @Log4j2
 @Service
@@ -69,10 +70,17 @@ public class JwtTokenUtils {
 				.build();
 
 	}
-	public static String generateToken(final String username, final String tokenId , boolean isRefresh) {
+	public static String generateToken(final String username, final String tokenId , boolean isRefresh, Collection authorities) {
 		return Jwts.builder()
 				.setId(tokenId)
 				.setSubject(username)
+				.addClaims(
+                        new HashMap<>() {
+                            {
+                                put("authority", authorities);
+                            }
+                        }
+				)
 				.setIssuedAt(new Date())
 				.setIssuer("app-Service")
 				.setExpiration(calcTokenExpirationDate(isRefresh))
@@ -90,10 +98,8 @@ public class JwtTokenUtils {
 		return claims.getSubject();
 	}
 
-	public boolean isTokenValid(String token, AppUserDetails userDetails) {
-		String username = getUserNameFromToken(token);
-		boolean isUserNameEqualMail = username.equalsIgnoreCase(userDetails.getEmail()) ;
-		return ((isUserNameEqualMail) && !isTokenExpired(token));
+	public boolean isTokenValid(String token) {
+		return (!isTokenExpired(token));
 	}
 
 	public boolean isTokenExpired(String token) {
@@ -132,4 +138,15 @@ public class JwtTokenUtils {
         return false;
 }
 
+	public Collection getRolesFromToken(String jwtToken) {
+		Claims claims = getClaims(jwtToken);
+		return (Collection) claims.get("authority");
+	}
+
+	public Set<GrantedAuthority> getAuthorities(String jwtToken) {
+		Set<GrantedAuthority> authorities = new HashSet<>();
+		Collection roles = getRolesFromToken(jwtToken);
+		roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(((LinkedHashMap<?, ?>) role).get("authority").toString())));
+		return authorities;
+	}
 }

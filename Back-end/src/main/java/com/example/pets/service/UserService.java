@@ -1,10 +1,12 @@
 package com.example.pets.service;
 
+import com.example.pets.dto.RegistrationDto;
+import com.example.pets.dto.UserInfoDTO;
+import com.example.pets.entity.Adopter;
 import com.example.pets.entity.Role;
+import com.example.pets.entity.Staff;
 import com.example.pets.entity.User;
-import com.example.pets.repository.RoleRepository;
-import com.example.pets.repository.UserRepository;
-import com.example.pets.repository.UserRoleRepository;
+import com.example.pets.repository.*;
 import com.example.pets.security.AppUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,20 +23,51 @@ public class UserService implements IUserService, UserDetailsService {
 
 
     @Autowired
-    UserRepository userRepo;
+    private final UserRepository userRepo;
     @Autowired
-    RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
     @Autowired
-    UserRoleRepository userRoleRepository;
+    private final UserRoleRepository userRoleRepository;
+    @Autowired
+    private final AdopterRepository adopterRepository;
+    @Autowired
+    private final StaffRepository staffRepository;
     @Autowired
     private final PasswordEncoder passwordEncoder;
 
 
     //-----------------------------------------------UserMethods--------------------------------------------------//
     @Override
-    public void createUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepo.save(user);
+    public void createUser(RegistrationDto user) {
+        String roles = user.getRole();
+        System.out.println(roles);
+        if (roles.contains("ADOPTER")) {
+            User user1=user.toUser();
+            Adopter adopter = adopterRepository.save(user.toAdopter());
+            user1.setPassword(passwordEncoder.encode(user1.getPassword()));
+            user1.setRoles(Set.of(Objects.requireNonNull(roleRepository.findByName("ADOPTER").orElse(null))));
+            user1.setPersonId(adopter.getAdopterId());
+            user1.setEnabled(true);
+            userRepo.save(user1);
+        }
+        if (roles.contains("STAFF")) {
+            User user1=user.toUser();
+            Staff staff = staffRepository.save(user.toStaff());
+            user1.setPassword(passwordEncoder.encode(user1.getPassword()));
+            user1.setRoles(Set.of(Objects.requireNonNull(roleRepository.findByName("STAFF").orElse(null))));
+            user1.setPersonId(staff.getStaffId());
+            user1.setEnabled(true);
+            userRepo.save(user1);
+        }
+        if (roles.contains("MANAGER")) {
+            User user1=user.toUser();
+            Staff staff = staffRepository.save(user.toStaff());
+            user1.setPassword(passwordEncoder.encode(user1.getPassword()));
+            user1.setRoles(Set.of(Objects.requireNonNull(roleRepository.findByName("MANAGER").orElse(null))));
+            user1.setPersonId(staff.getStaffId());
+            user1.setEnabled(true);
+            userRepo.save(user1);
+        }
     }
 
 
@@ -46,7 +79,8 @@ public class UserService implements IUserService, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepo.findByEmail(username);
-        return new AppUserDetails(user.get());
+        System.out.println(user);
+        return new AppUserDetails(user.orElseThrow(() -> new UsernameNotFoundException("User not found")));
     }
 
 
@@ -79,6 +113,24 @@ public class UserService implements IUserService, UserDetailsService {
             emails.add(user.getEmail());
         }
         return emails;
+    }
+
+    @Override
+    public Object getMe(UserInfoDTO userInfoDTO) {
+        Role role = roleRepository.findByName(userInfoDTO.getRole().get(0)).orElse(null);
+        if (role.getName().equals("ADOPTER")) {
+            Adopter adopter = adopterRepository.findById(userInfoDTO.getPersonId()).orElse(null);
+            return adopter;
+        }
+        if (role.getName().equals("STAFF")) {
+            Staff staff = staffRepository.findById(userInfoDTO.getPersonId()).orElse(null);
+            return staff;
+        }
+        if (role.getName().equals("MANAGER")) {
+            Staff staff = staffRepository.findById(userInfoDTO.getPersonId()).orElse(null);
+            return staff;
+        }
+        return null;
     }
 
     //---------------------------------------------------RoleMethods--------------------------------------------------//
