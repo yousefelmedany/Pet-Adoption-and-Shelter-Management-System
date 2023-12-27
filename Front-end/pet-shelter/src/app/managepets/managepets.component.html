@@ -1,38 +1,42 @@
 <div class="container">
     <div class="top">
-   <button class="btn btn-primary">Add <i class="fa-solid fa-plus"></i></button>
+   <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add <i class="fa-solid fa-plus"></i></button>
     </div>
- <div *ngFor="let pet of pets">   
+ <div *ngFor="let pet of pets;let i=index">   
 <div class="card">
     <div class="bg-image hover-overlay" >
-      <img src="https://www.courierpostonline.com/gcdn/presto/2020/02/24/PCHH/eaa80fe0-5fcb-483b-ad10-59fc36fa95fc-GettyImages-1092587292.jpg?width=660&height=440&fit=crop&format=pjpg&auto=webp" class="img-fluid" style="width: 40vw;"/>
+      <img [src]="images[i]" class="img-fluid" style="width: 40vw;height: 50vh;"/>
       <a href="#!">
         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
       </a>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{pet.petName}}</h5>
+        <hr>
+      <div class="tgme3a">
       <p class="card-text"><strong>Specie: </strong>{{pet.species}}</p>
-      <hr>
       <p class="card-text"><strong>Breed: </strong>{{pet.breed}}</p>
+    </div>
       <hr>
+      <div class="tgme3a">
       <p class="card-text"><strong>Color: </strong>{{pet.color}}</p>
-      <hr>
       <p class="card-text"><strong>Gender: </strong>{{pet.gender}}</p>
+    </div>
       <hr>
+      <div class="tgme3a">
       <p class="card-text"><strong>Age: </strong>{{pet.age}}</p>
-      <hr>
       <p class="card-text"><strong>Health Status: </strong>{{pet.healthStatus}}</p>
+    </div>
       <hr>
+      <div class="tgme3a">
       <p class="card-text"><strong>Training: </strong>{{pet.training}}</p>
-      <hr>
       <p class="card-text"><strong>Vaccination: </strong>{{pet.vaccination}}</p>
+    </div>
       <hr>
+      <div class="tgme3a">
       <p class="card-text"><strong>Spay Neuter: </strong>{{pet.spayNeuter}}</p>
-      <hr>
       <p class="card-text"><strong>Behaviour: </strong>{{pet.behavior}}</p>
-      <hr>
-      <p class="card-text"><strong>Specie: </strong>{{pet.species}}</p>
+    </div>
       <hr>
       <div class="btn">
       <button class="btn btn-dark">Edit<i class="fa-solid fa-pen"></i></button>
@@ -41,4 +45,171 @@
     </div>
   </div>
 </div>
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Add Pet
+        </h5>
+        <button class="outer_button" (click)="close()">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h2>Pet Name :</h2>
+        <input
+          type="text"
+          name="forget_pass"
+          id="forget_pass_input"
+          #new_pass
+          [(ngModel)]="newPet.petName"
+        />
+      </div>
+      <div class="modal-body">
+        <h2>Specie :</h2>
+        <input
+          type="text"
+          name="forget_pass"
+          id="forget_pass_input"
+          #new_pass
+            [(ngModel)]="newPet.species"
+        />
+      </div>
+        <div class="modal-body">
+            <h2>Breed :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.breed"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Color :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.color"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Gender :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.gender"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Age :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.age"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Health Status :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.healthStatus"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Training :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.training"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Vaccination :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.vaccination"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Spay Neuter :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.spayNeuter"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Behaviour :</h2>
+            <input
+            type="text"
+            name="forget_pass"
+            id="forget_pass_input"
+            #new_pass
+                [(ngModel)]="newPet.behavior"
+            />
+        </div>
+        <div class="modal-body">
+            <h2>Pet Image :</h2>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Upload</span>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="handleImageInput($event)">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>
+        </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="Addpet()">
+          Add
+          <div class="spinner-border text-light" role="status" *ngIf="spinner_flag == true"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="notify" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          successfuly Added
+        </h5>
+        <button class="outer_button" (click)="close()">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
