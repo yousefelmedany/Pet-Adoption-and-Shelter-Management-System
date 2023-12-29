@@ -6,6 +6,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Pet } from '../Objects/Pet';
 import { AdoptionService } from '../Service/adoption.service';
 import { Application } from '../Objects/Application';
+import { StorageService } from '../Service/storage.service';
+import { Adopter } from '../Objects/Adopter';
 declare const $: any;
 
 @Component({
@@ -19,7 +21,8 @@ export class ApplicationComponent implements OnInit {
     private shelterService: ShelterService,
     private router: Router,
     private sanitizer: DomSanitizer,
-    private adoptionService: AdoptionService
+    private adoptionService: AdoptionService,
+    private storageService: StorageService
   ) {}
 
   spinner_flag: boolean = false;
@@ -30,9 +33,9 @@ export class ApplicationComponent implements OnInit {
   isApproved: boolean = false;
   isRejected: boolean = true;
   isPending: boolean = false;
+  currAdopter:Adopter=this.storageService.getAdopter();
   ngOnInit(): void {
-    //hnbdel el 10 de be adopterid
-    this.adoptionService.getApplicationsByAdopterId(10).subscribe(res=>{
+    this.adoptionService.getApplicationsByAdopterId(this.currAdopter.adopterId).subscribe(res=>{
       this.applications=res;
       for(let i=0;i<this.applications.length;i++){
         this.images.push(this.convertToImage(this.applications[i].pet.image));

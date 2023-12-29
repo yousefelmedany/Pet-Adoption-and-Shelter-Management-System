@@ -21,6 +21,7 @@ public class Shelter {
     private String shelterAddress;
     private String shelterPhone;
 
+
     @OneToOne(mappedBy = "shelter")
     @JsonIgnoreProperties("shelter")
     private Staff shelterAdmin;

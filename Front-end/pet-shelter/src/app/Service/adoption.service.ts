@@ -17,4 +17,7 @@ export class AdoptionService {
   getApplicationsByAdopterId(adopterId:any): Observable<any> {
     return this.http.get<any>(`${baseUrl}/getapplications`,{params:{adopterid:adopterId}});
   }
+  getAdopterById(adopterId:any): Observable<any> {
+    return this.http.get<any>(`${baseUrl}/getadopter`,{params:{adopterid:adopterId}});
+  }
 }
