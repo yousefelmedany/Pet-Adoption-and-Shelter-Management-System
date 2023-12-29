@@ -1,197 +1,199 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: fit-content;
-   
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
 }
-.card{
-   
-    margin-bottom: 2rem;
-    width: 40vw;
+.card {
+  margin-top: 30px;
+  width: 40vw;
 }
-.card-text{
-    font-size: 1.3rem;
-    font-weight: 400;
+.card-text {
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
-.card-title{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
+.card-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
 }
-.btn{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap:2rem;
+.btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.btn button{
-    width: 7.8rem;
-    height: 3rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+.btn button {
+  width: 100%;
+  height: 3rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
-.btn button:hover{
-    transform: scale(1.1);
+.top {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 5rem;
+  font-size: 2rem;
+  font-weight: 500;
 }
-.top{
-    display: flex;
-    flex-direction: column;
-    width: 40vw;
-    height: 5rem;
-    font-size: 2rem;
-    font-weight: 500;
-}
-.top button{
-    width: 40vw;
-    height: 3rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-.top button:hover{
-    transform: scale(1.1);
+.top button {
+  width: 40vw;
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 10px;
 }
 .error {
-    font-size: small;
-    margin-top: -19px;
-    margin-bottom: 10px;
-    margin-left: 2px;
-    color: red;
-  }
-  
-  .spinner-border {
-    color: white;
-    font-size: 16px;
-    margin-left: 8px;
-    width: 20px;
-    height: 20px;
-  }
-  
-  #signup {
-    margin-top: 10px;
-  }
-  
-  #btn:disabled {
-    background: grey;
-    cursor: not-allowed;
-  }
-  
-  a {
-    color: inherit;
-    color: #008081;
-    text-decoration: none;
-  }
-  
-  .error {
-    font-size: small;
-    margin-top: -25px;
-    margin-bottom: 10px;
-    color: red;
-  }
-  
-  #forget {
-    margin-top: 10px;
-    color: #008081;
-    cursor: pointer;
-  }
-  
-  .outer_button {
-    border: none;
-    border-radius: 10px;
-    background-color: #fff;
-    width: 25px;
-    height: 25px;
-    margin-left: 3px;
-  }
-  
-  .modal-title {
-    color: #008081;
-    font-size: 30px;
-    font-family: Montserrat;
-    font-weight: 700;
-    line-height: 100%;
-  }
-  
-  .modal-content {
-    border-radius: 15px;
-    background-color: #efefef;
-    box-shadow: 0px 0px 25px 0px white;
-  }
-  
-  .modal-footer button {
-    background: #008081;
-    box-shadow: 0px 0px 7px 0px rgba(0, 129, 130, 0.16);
-    color: #fff;
-    width: 200px;
-    border: none;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 8px 10px;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-  }
-  
-  .modal-body {
-    color: #008081;
-    font-size: 16px;
-    font-family: Montserrat;
-    font-weight: 500;
-  }
-  
-  .modal-footer button:hover {
-    background: #fff;
-    color: #008081;
-    border: 1px solid #008081;
-    transition: 1s;
-  }
-  
-  .modal-backdrop {
-    background-color: transparent !important;
-    pointer-events: none !important;
-  }
-  
-  .spinner-border {
-    color: white;
-    font-size: 16px;
-    margin-left: 6px;
-    width: 18px;
-    height: 18px;
-  }
-  
-  #forget_pass_input {
-    width: 100%;
-    height: 4vh;
-    border-radius: 7px;
-    padding: 2%;
-    color: #000;
-    font-weight: 500;
-  }
-  .tgme3a{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  font-size: small;
+  margin-top: -19px;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  color: red;
+}
+
+.spinner-border {
+  color: white;
+  font-size: 16px;
+  margin-left: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+#signup {
+  margin-top: 10px;
+}
+
+#btn:disabled {
+  background: grey;
+  cursor: not-allowed;
+}
+
+a {
+  color: inherit;
+  color: #008081;
+  text-decoration: none;
+}
+i {
+  margin-left: 5px;
+}
+
+.error {
+  font-size: small;
+  margin-top: -25px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+#forget {
+  margin-top: 10px;
+  color: #008081;
+  cursor: pointer;
+}
+
+.outer_button {
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+  margin-left: 3px;
+}
+
+.modal-title {
+  color: #008081;
+  font-size: 30px;
+  font-family: Montserrat;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.modal-content {
+  border-radius: 15px;
+  background-color: #efefef;
+  box-shadow: 0px 0px 25px 0px white;
+}
+
+.modal-footer button {
+  background: #008081;
+  box-shadow: 0px 0px 7px 0px rgba(0, 129, 130, 0.16);
+  color: #fff;
+  width: 200px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 8px 10px;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+
+.modal-body {
+  color: #008081;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 500;
+}
+
+.modal-footer button:hover {
+  background: #fff;
+  color: #008081;
+  border: 1px solid #008081;
+  transition: 1s;
+}
+
+.modal-backdrop {
+  background-color: transparent !important;
+  pointer-events: none !important;
+}
+
+.spinner-border {
+  color: white;
+  font-size: 16px;
+  margin-left: 6px;
+  width: 18px;
+  height: 18px;
+}
+
+#forget_pass_input {
+  width: 100%;
+  height: 4vh;
+  border-radius: 7px;
+  padding: 2%;
+  color: #000;
+  font-weight: 500;
+}
+.tgme3a {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+img {
+  width: 100%;
+}
+.input-group {
+  gap: 10px;
+}
