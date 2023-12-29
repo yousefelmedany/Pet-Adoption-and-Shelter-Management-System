@@ -10,6 +10,7 @@ import { UserpageComponent } from './userpage/userpage.component';
 import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
 import { DocumentPageComponent } from './document-page/document-page.component';
 import { ApplicationComponent } from './application/application.component';
+import { ChooseShelterComponent } from './choose-shelter/choose-shelter.component';
 export const routes: Routes = [
   {
     path: '',
@@ -57,6 +58,10 @@ export const routes: Routes = [
       {
         path: 'application',
         component: ApplicationComponent
+      },
+      {
+        path: 'chooseshelter',
+        component: ChooseShelterComponent
       },
     ]
   }

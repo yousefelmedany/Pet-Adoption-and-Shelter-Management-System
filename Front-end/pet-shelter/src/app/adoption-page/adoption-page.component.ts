@@ -4,6 +4,9 @@ import { ShelterService } from '../Service/shelter.service';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Pet } from '../Objects/Pet';
+import { AdoptionService } from '../Service/adoption.service';
+import { SharedService } from '../Service/shared.service';
+import { Shelter } from '../Objects/Shelter';
 declare const $: any;
 
 @Component({
@@ -16,22 +19,26 @@ export class AdoptionPageComponent implements OnInit {
     private petService: PetService,
     private shelterService: ShelterService,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private adoptionService: AdoptionService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
-    this.petService.getAllPetsInShelter(5).subscribe(
-      (data) => {
-        this.pets = data;
-        for (let i = 0; i < this.pets.length; i++) {
-          this.images.push(this.convertToImage(this.pets[i].image));
+    this.petService
+      .getAllPetsInShelter(this.currentShelter.shelterId)
+      .subscribe(
+        (data) => {
+          this.pets = data;
+          for (let i = 0; i < this.pets.length; i++) {
+            this.images.push(this.convertToImage(this.pets[i].image));
+          }
+          console.log(this.pets);
+        },
+        (error) => {
+          console.log(error);
         }
-        console.log(this.pets);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      );
   }
 
   pets: Pet[] = [];
@@ -39,6 +46,9 @@ export class AdoptionPageComponent implements OnInit {
   newPet: Pet = new Pet();
   selectedFile!: File;
   images: any[] = [];
+  description: any = '';
+  index: any = 0;
+  currentShelter: Shelter = this.sharedService.getChoosedShelter();
 
   convertToImage(string: any) {
     const binaryString = atob(string);
@@ -54,5 +64,20 @@ export class AdoptionPageComponent implements OnInit {
   close() {
     $('#exampleModalCenter').modal('hide');
     $('#notify').modal('hide');
+  }
+  set_index(i: any) {
+    this.index = i;
+  }
+  fill_application() {
+    let formdata = new FormData();
+    formdata.append('adopterid', '10');
+    formdata.append('petid', this.pets[this.index].petId);
+    formdata.append('description', this.description);
+    this.adoptionService.make_adoption_request(formdata).subscribe((res) => {
+      if (res == null) {
+        alert('You have already made an adoption request for this pet');
+      }
+      console.log(res);
+    });
   }
 }

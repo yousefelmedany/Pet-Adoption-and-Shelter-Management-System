@@ -19,6 +19,7 @@ import { DocumentPageComponent } from './document-page/document-page.component';
 import { UserpageComponent } from './userpage/userpage.component';
 import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
 import { ApplicationComponent } from './application/application.component';
+import { ChooseShelterComponent } from './choose-shelter/choose-shelter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { ApplicationComponent } from './application/application.component';
     UserpageComponent,
     AdoptionPageComponent,
     DocumentPageComponent,
-    ApplicationComponent
+    ApplicationComponent,
+    ChooseShelterComponent
   ],
   imports: [
     BrowserModule,

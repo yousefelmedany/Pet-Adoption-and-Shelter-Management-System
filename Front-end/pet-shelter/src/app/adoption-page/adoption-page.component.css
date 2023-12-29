@@ -214,7 +214,7 @@ a {
   color: #333;
 }
 .img {
-  width: 50vw;
+  width: 100%;
 }
 textarea {
   height: 200px;

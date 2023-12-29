@@ -5,6 +5,8 @@ import com.example.pets.repository.ShelterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @org.springframework.stereotype.Service
 public class ShelterService implements IShelterService{
@@ -13,5 +15,9 @@ public class ShelterService implements IShelterService{
     @Override
     public Shelter saveShelter(Shelter shelter) {
         return shelterRepository.save(shelter);
+    }
+    @Override
+    public List<Shelter> getAllShelters() {
+        return shelterRepository.findAll();
     }
 }
