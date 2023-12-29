@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface IPetService {
     Pet savePet(Pet pet,Long shelterId);
+    Pet editPet(Pet pet);
+    void removePet(Long petId);
     List<Pet> getPetsByShelterId(Long shelterId);
 }

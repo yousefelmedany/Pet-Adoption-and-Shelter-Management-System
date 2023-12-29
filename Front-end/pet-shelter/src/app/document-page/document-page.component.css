@@ -1,0 +1,58 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.card{
+    width: 40vw;
+    margin-bottom: 2rem;
+    border: 1px solid #333;
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+}
+.card label{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.card iframe{
+    width: 100%;
+    height: 20rem;
+    border: none;
+}
+.spinner-border {
+    color: white;
+    font-size: 16px;
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+  }
+  .btn{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap:2rem;
+}
+.btn button{
+    width: 7.8rem;
+    height: 3rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.btn button:hover{
+    transform: scale(1.1);
+}

@@ -15,7 +15,11 @@ import { StorageService } from './Service/storage.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StaffProfileComponent } from './staff-profile/staff-profile.component';
-
+import { FormsModule } from '@angular/forms';
+import { DocumentPageComponent } from './document-page/document-page.component';
+import { UserpageComponent } from './userpage/userpage.component';
+import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
+import { ApplicationComponent } from './application/application.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +29,10 @@ import { StaffProfileComponent } from './staff-profile/staff-profile.component';
     SiginInComponent,
     SiginUpComponent,
     StaffProfileComponent
+    UserpageComponent,
+    AdoptionPageComponent,
+    DocumentPageComponent,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,

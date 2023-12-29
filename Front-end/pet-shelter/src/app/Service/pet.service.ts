@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Form } from '@angular/forms';
 const baseUrl = 'http://localhost:8080/pet';
 
 @Injectable({
@@ -14,5 +15,11 @@ export class PetService {
   }
   getAllPetsInShelter(shelterId:any): Observable<any> {
     return this.http.get(baseUrl + '/get',{params:{shelterid:shelterId}});
+  }
+  editPet(pet:any): Observable<any> {
+    return this.http.post<any>(baseUrl + '/edit',pet);
+  }
+  removePet(petId:any): Observable<any> {
+    return this.http.delete<any>(baseUrl + '/delete',{params:{petid:petId}});
   }
 }
