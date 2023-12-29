@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,4 +23,13 @@ public class Adopter {
             , fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Pet> pets;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="Application",
+            joinColumns = @JoinColumn(name="adopterId"),
+            inverseJoinColumns = @JoinColumn(name="petId")
+    )
+    @JsonIgnore
+    List<Pet> requestedPets=new ArrayList<>();
 }

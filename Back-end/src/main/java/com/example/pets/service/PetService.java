@@ -40,7 +40,6 @@ public class PetService implements IPetService {
         oldPet.setSpecies(pet.getSpecies());
         oldPet.setColor(pet.getColor());
         oldPet.setHealthStatus(pet.getHealthStatus());
-        oldPet.setStatus(pet.getStatus());
         oldPet.setVaccination(pet.getVaccination());
         oldPet.setSpayNeuter(pet.getSpayNeuter());
         oldPet.setTraining(pet.getTraining());

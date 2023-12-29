@@ -18,6 +18,7 @@ import java.util.List;
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pet_id")
     private Long petId;
     private String petName;
     private String species;
@@ -47,10 +48,10 @@ public class Pet {
     @ManyToOne
     @JoinColumn(name = "shelterId")
     private Shelter shelter;
-    private String status;
-    private LocalDate date;
 
-    public Pet(String petName, String species, String breed, String color, String gender, String age, String healthStatus, String training, String vaccination, String spayNeuter, String behavior, String status) {
+    @ManyToMany(mappedBy = "requestedPets")
+    List<Adopter> pendingAdopters;
+    public Pet(String petName, String species, String breed, String color, String gender, String age, String healthStatus, String training, String vaccination, String spayNeuter, String behavior) {
         this.petName = petName;
         this.species = species;
         this.breed = breed;
@@ -62,7 +63,6 @@ public class Pet {
         this.vaccination = vaccination;
         this.spayNeuter = spayNeuter;
         this.behavior = behavior;
-        this.status = status;
     }
 }
 
