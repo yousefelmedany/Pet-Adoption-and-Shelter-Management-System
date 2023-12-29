@@ -4,6 +4,9 @@ import { ShelterService } from '../Service/shelter.service';
 import { Router } from '@angular/router';
 import { Pet } from '../Objects/Pet';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Document } from '../Objects/Document';
+import { DocumentService } from '../Service/document.service';
+import { SharedService } from '../Service/shared.service';
 declare const $: any;
 @Component({
   selector: 'app-managepets',
@@ -16,13 +19,18 @@ export class ManagepetsComponent implements OnInit {
     private petService: PetService,
     private shelterService: ShelterService,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private documentService:DocumentService,
+    private sharedService:SharedService
   ) {}
 pets: Pet[] = [];
 spinner_flag: boolean = false;
 newPet: Pet = new Pet();
 selectedFile!: File;
 images: any[] = [];
+document:Document=new Document();
+PetDocuments:Document[]=[];
+index:number=0;
   ngOnInit(): void {
     this.petService.getAllPetsInShelter(5).subscribe(
       (data) => {
@@ -39,7 +47,20 @@ images: any[] = [];
   }
   close() {
     $('#exampleModalCenter').modal('hide');
+    $('#document').modal('hide');
     $('#notify').modal('hide');
+    $('#notify1').modal('hide');
+    $('#edit').modal('hide');
+  }
+  setindex(i:number){
+    this.index=i;
+  }
+  getPetDocuments(i:number){
+    this.documentService.getAllDocumentsInPet(this.pets[i].petId).subscribe(res=>{
+      this.PetDocuments=res;
+      this.sharedService.setDocuments(this.PetDocuments);
+      this.router.navigate(['/staffpage/documentpage']);
+    });
   }
 Addpet() {
   this.spinner_flag = true;
@@ -62,6 +83,26 @@ Addpet() {
     }
   );
 }
+AddDocument(){
+  this.spinner_flag = true;
+  let formdata = new FormData();
+  formdata.append('file', this.selectedFile);
+  formdata.append('document', JSON.stringify(this.document));
+  formdata.append('petid', this.pets[this.index].petId);
+  this.documentService.saveDocument(formdata).subscribe(
+    (data) => {
+      this.spinner_flag = false;
+      this.document=new Document();
+      $('#document').modal('hide');
+      $('#notify').modal('show');
+    },
+    (error) => {
+      this.spinner_flag = false;
+      console.log(error);
+    }
+  );
+
+}
 
 handleImageInput(event: any): void {
   const file = event.target.files[0]; // Get the selected file
@@ -69,6 +110,33 @@ handleImageInput(event: any): void {
     this.selectedFile = file;
   
   }
+}
+Editpet(){
+  this.spinner_flag = true;
+  this.petService.editPet(this.pets[this.index]).subscribe(
+    (data) => {
+      this.spinner_flag = false;
+      $('#edit').modal('hide');
+      $('#notify1').modal('show');
+    },
+    (error) => {
+      this.spinner_flag = false;
+      console.log(error);
+    }
+  );
+}
+removepet(i:number){
+  this.spinner_flag = true;
+  this.petService.removePet(this.pets[i].petId).subscribe(
+    (data) => {
+      this.spinner_flag = false;
+      this.pets.splice(i,1);
+    },
+    (error) => {
+      this.spinner_flag = false;
+      console.log(error);
+    }
+  );
 }
 convertToImage(string: any) {
   const binaryString = atob(string);

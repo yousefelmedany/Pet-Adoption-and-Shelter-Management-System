@@ -6,6 +6,10 @@ import { ManagepetsComponent } from './managepets/managepets.component';
 import { SiginUpComponent } from './sigin-up/sigin-up.component';
 import { SiginInComponent } from './sigin-in/sigin-in.component';
 import { StaffProfileComponent } from './staff-profile/staff-profile.component';
+import { UserpageComponent } from './userpage/userpage.component';
+import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
+import { DocumentPageComponent } from './document-page/document-page.component';
+import { ApplicationComponent } from './application/application.component';
 export const routes: Routes = [
   {
     path: '',
@@ -35,7 +39,25 @@ export const routes: Routes = [
       {
         path: 'manageadoption',
         component: ManageAdoptionComponent
-      }
+      },
+      {
+        path: 'documentpage',
+        component: DocumentPageComponent
+      },
+    ]
+  },
+  {
+    path:'userpage',
+    component: UserpageComponent,
+    children: [
+      {
+        path: 'adoptionpage',
+        component: AdoptionPageComponent
+      },
+      {
+        path: 'application',
+        component: ApplicationComponent
+      },
     ]
   }
 ];

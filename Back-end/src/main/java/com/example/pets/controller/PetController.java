@@ -28,4 +28,12 @@ public class PetController {
     public List<Pet> getPetsByShelterId(@RequestParam("shelterid") Long shelterId) {
         return petService.getPetsByShelterId(shelterId);
     }
+    @PostMapping("/edit")
+    public Pet editPet(@RequestBody Pet pet){
+        return petService.editPet(pet);
+    }
+    @DeleteMapping("/delete")
+    public void removePet(@RequestParam("petid") Long petId){
+        petService.removePet(petId);
+    }
 }

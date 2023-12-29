@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <div id="container">
+    <div id="sidebar">
+      <div class="top" style="display: flex">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa-solid fa-paw fa-3x"></i>
+        <a id="Name">Petito &nbsp;</a>
+        <i class="fa-solid fa-paw fa-3x"></i>
+      </div>
+
+      <div id="menu">
+        <a routerLink="adoptionpage" routerLinkActive="active"
+          ><i class="fa-solid fa-cat"></i> Pet Adoption</a
+        >
+      </div>
+      <div id="menu">
+        <a routerLink="application" routerLinkActive="active"
+          ><i class="fa-solid fa-file-circle-check"></i> Applications</a
+        >
+      </div>
+      <div id="sidebar-end-block">
+        <a> <i class="fas fa-sign-out-alt icon"></i> Logout</a>
+      </div>
+    </div>
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</html>

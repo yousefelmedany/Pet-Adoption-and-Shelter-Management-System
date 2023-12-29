@@ -8,15 +8,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+
 @RequiredArgsConstructor
 @org.springframework.stereotype.Service
-public class PetService implements IPetService{
+public class PetService implements IPetService {
     @Autowired
     PetRepository petRepository;
     @Autowired
     ShelterRepository shelterRepository;
+
     @Override
-    public Pet savePet(Pet pet,Long shelterId) {
+    public Pet savePet(Pet pet, Long shelterId) {
         Shelter shelter = shelterRepository.findById(shelterId).orElse(null);
         pet.setShelter(shelter);
         return petRepository.save(pet);
@@ -25,5 +27,26 @@ public class PetService implements IPetService{
     @Override
     public List<Pet> getPetsByShelterId(Long shelterId) {
         return petRepository.findByShelterShelterId(shelterId);
+    }
+
+    @Override
+    public Pet editPet(Pet pet) {
+        Pet oldPet = petRepository.findById(pet.getPetId()).orElse(null);
+        if (oldPet == null) return null;
+        oldPet.setPetName(pet.getPetName());
+        oldPet.setAge(pet.getAge());
+        oldPet.setGender(pet.getGender());
+        oldPet.setBreed(pet.getBreed());
+        oldPet.setSpecies(pet.getSpecies());
+        oldPet.setColor(pet.getColor());
+        oldPet.setHealthStatus(pet.getHealthStatus());
+        oldPet.setVaccination(pet.getVaccination());
+        oldPet.setSpayNeuter(pet.getSpayNeuter());
+        oldPet.setTraining(pet.getTraining());
+        return petRepository.save(oldPet);
+    }
+    @Override
+    public void removePet(Long petId) {
+        petRepository.deleteById(petId);
     }
 }
