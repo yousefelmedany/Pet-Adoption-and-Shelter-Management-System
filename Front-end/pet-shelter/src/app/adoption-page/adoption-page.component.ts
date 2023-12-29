@@ -25,18 +25,20 @@ export class AdoptionPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.petService.getAllPetsInShelter(this.currentShelter.shelterId).subscribe(
-      (data) => {
-        this.pets = data;
-        for (let i = 0; i < this.pets.length; i++) {
-          this.images.push(this.convertToImage(this.pets[i].image));
+    this.petService
+      .getAllPetsInShelter(this.currentShelter.shelterId)
+      .subscribe(
+        (data) => {
+          this.pets = data;
+          for (let i = 0; i < this.pets.length; i++) {
+            this.images.push(this.convertToImage(this.pets[i].image));
+          }
+          console.log(this.pets);
+        },
+        (error) => {
+          console.log(error);
         }
-        console.log(this.pets);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      );
   }
 
   pets: Pet[] = [];
@@ -44,7 +46,7 @@ export class AdoptionPageComponent implements OnInit {
   newPet: Pet = new Pet();
   selectedFile!: File;
   images: any[] = [];
-  description: any = 'ok';
+  description: any = '';
   index: any = 0;
   currentShelter: Shelter = this.sharedService.getChoosedShelter();
 
@@ -67,14 +69,15 @@ export class AdoptionPageComponent implements OnInit {
     this.index = i;
   }
   fill_application() {
-let formdata=new FormData();
-formdata.append("adopterid",'10');
-formdata.append("petid",this.pets[this.index].petId);
-formdata.append("description",this.description);
-    this.adoptionService
-      .make_adoption_request(formdata)
-      .subscribe((res) => {
-        console.log(res);
-      });
+    let formdata = new FormData();
+    formdata.append('adopterid', '10');
+    formdata.append('petid', this.pets[this.index].petId);
+    formdata.append('description', this.description);
+    this.adoptionService.make_adoption_request(formdata).subscribe((res) => {
+      if (res == null) {
+        alert('You have already made an adoption request for this pet');
+      }
+      console.log(res);
+    });
   }
 }
