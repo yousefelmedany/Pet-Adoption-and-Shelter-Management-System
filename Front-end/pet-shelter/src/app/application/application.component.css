@@ -229,14 +229,16 @@ label {
   padding: 20px;
   font-size: 30px;
   text-align: center;
-  color: black;
 }
 .pending {
+  color: black;
   background-color: gold;
 }
 .approved {
+  color: white;
   background-color: green;
 }
 .rejected {
+  color: black;
   background-color: rgb(255, 25, 25);
 }
