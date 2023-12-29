@@ -237,5 +237,5 @@ label {
   background-color: green;
 }
 .rejected {
-  background-color: red;
+  background-color: rgb(255, 25, 25);
 }
