@@ -7,6 +7,8 @@ import com.example.pets.repository.StaffRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @org.springframework.stereotype.Service
 public class ShelterService implements IShelterService{
@@ -40,5 +42,9 @@ public class ShelterService implements IShelterService{
         shelter1.setShelterAddress(shelter.getShelterAddress());
         shelter1.setShelterPhone(shelter.getShelterPhone());
         return shelterRepository.save(shelter1);
+    }
+    @Override
+    public List<Shelter> getAllShelters() {
+        return shelterRepository.findAll();
     }
 }

@@ -2,7 +2,7 @@
   <div class="top"></div>
   <div *ngFor="let pet of pets; let i = index">
     <div class="card">
-      <div class="bg-image hover-overlay">
+      <div class="bg-image hover-overlay" style="text-align: center;">
         <img [src]="images[i]" class="img-fluid" />
         <a href="#!">
           <div
@@ -42,6 +42,7 @@
             class="btn btn-dark"
             data-toggle="modal"
             data-target="#exampleModalCenter"
+            (click)="set_index(i)"
           >
             Fill Application<i class="fa-solid fa-file-signature"></i>
           </button>
@@ -102,11 +103,17 @@
             type="text"
             name="forget_pass"
             id="forget_pass_input"
+            [(ngModel)]="description"
+            maxlength="1000"
             placeholder="Why you want to adopt this pet and why you are the best candidate for this pet?"
           ></textarea>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success">
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="fill_application()"
+          >
             Submit <i class="fa-solid fa-check"></i>
             <div
               class="spinner-border text-light"

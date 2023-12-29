@@ -40,7 +40,14 @@ public class AdoptionService implements IAdopterService{
     public Application makeApplication(Long adopterId, Long petId, String description) {
         Adopter adopter= adopterRepository.findById(adopterId).orElse(null);
         Pet pet= petRepository.findById(petId).orElse(null);
+
         if(adopter==null || pet==null) return null;
+
+        ApplicationId applicationId=new ApplicationId();
+        applicationId.setAdopter(adopterId);
+        applicationId.setPet(petId);
+        Application oldApplication=applicationRepository.findById(applicationId).orElse(null);
+        if(oldApplication!=null) return null;
         Application application=new Application();
         application.setAdopter(adopter);
         application.setPet(pet);

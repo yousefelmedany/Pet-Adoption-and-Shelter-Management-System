@@ -12,6 +12,7 @@ import { DocumentPageComponent } from './document-page/document-page.component';
 import { ApplicationComponent } from './application/application.component';
 import { AddShelterComponent } from './add-shelter/add-shelter.component';
 import { ManageShelterComponent } from './manage-shelter/manage-shelter.component';
+import { ChooseShelterComponent } from './choose-shelter/choose-shelter.component';
 export const routes: Routes = [
   {
     path: '',
@@ -67,6 +68,10 @@ export const routes: Routes = [
       {
         path: 'application',
         component: ApplicationComponent
+      },
+      {
+        path: 'chooseshelter',
+        component: ChooseShelterComponent
       },
     ]
   }

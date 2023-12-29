@@ -19,5 +19,7 @@ export class ShelterService {
   editShelter(shelter:any):Observable<any>{
     return this.http.put(baseUrl+'/edit',shelter);
   }
-
+  getAllShelters(): Observable<any> {
+    return this.http.get<any>(baseUrl + '/getall');
+  }
 }

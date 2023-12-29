@@ -7,10 +7,10 @@ import { Staff } from '../Objects/Staff';
 @Component({
   selector: 'app-staff-page',
   templateUrl: './staff-page.component.html',
-  styleUrls: ['./staff-page.component.css']
+  styleUrls: ['./staff-page.component.css'],
 })
 export class StaffPageComponent implements OnInit {
-
+  constructor(private storage: StorageService, private router: Router) {}
   user!:{name:string,role:any,personId:number,email:string}
   staff!: Staff;
   role!:String
@@ -39,5 +39,4 @@ export class StaffPageComponent implements OnInit {
     this.storage.clean()
     this.router.navigate(['/signin']);
   }
-
 }

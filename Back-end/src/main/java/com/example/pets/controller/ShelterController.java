@@ -4,6 +4,7 @@ import com.example.pets.entity.Shelter;
 import com.example.pets.service.IShelterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/shelter")
@@ -21,5 +22,9 @@ public class ShelterController {
     @PutMapping("/edit")
     public Shelter editShelter(@RequestBody Shelter shelter){
         return shelterService.editShelter(shelter);
+    }
+    @GetMapping("/getall")
+    public List<Shelter> getAllShelters() {
+        return shelterService.getAllShelters();
     }
 }
