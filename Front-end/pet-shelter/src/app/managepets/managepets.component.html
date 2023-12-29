@@ -7,33 +7,6 @@
     >
       Add <i class="fa-solid fa-plus"></i>
     </button>
-    <div class="input-group">
-      <input
-        type="text"
-        class="form-control"
-        aria-label="Text input with dropdown button"
-      />
-      <div class="input-group-append" style="width: 10vw">
-        <button
-          class="btn btn-outline-secondary dropdown-toggle"
-          type="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          style="background-color: #fff; height: 5vh"
-        ></button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <div role="separator" class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-        <button class="btn btn-success" type="button" style="height: 5vh">
-          Search<i class="fa-solid fa-search"></i>
-        </button>
-      </div>
-    </div>
   </div>
   <div *ngFor="let pet of pets; let i = index">
     <div class="card">
