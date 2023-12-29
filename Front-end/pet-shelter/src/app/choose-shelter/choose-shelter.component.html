@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="grid-container">
+      <div class="card" *ngFor="let shelter of shelters; let i = index">
+        <label><strong>Name: </strong>  {{ shelter.shelterName }}</label>
+        <hr>
+        <label> <strong>Address: </strong>{{ shelter.shelterAddress }}</label>
+        <hr>
+        <label> <strong>Phone Number: </strong>{{ shelter.shelterPhone }}</label>
+        <div class="card-footer" style="background-color: #fff;">
+          <button class="btn btn-success" (click)="goToShelter(i)">
+            Go to Shelter
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

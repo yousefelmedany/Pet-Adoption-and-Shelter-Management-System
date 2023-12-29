@@ -10,10 +10,11 @@ export class AdoptionService {
   constructor(private http: HttpClient) {}
 
   make_adoption_request(
-    adopter_id: any,
-    pet_id: any,
-    des: any
+    formdata: FormData,
   ): Observable<any> {
-    return this.http.post<any>(`${baseUrl}/makeapplication`, {params: { adopterid: adopter_id, petid: pet_id, description: des }});
+    return this.http.post<any>(`${baseUrl}/makeapplication`, formdata);
+  }
+  getApplicationsByAdopterId(adopterId:any): Observable<any> {
+    return this.http.get<any>(`${baseUrl}/getapplications`,{params:{adopterid:adopterId}});
   }
 }

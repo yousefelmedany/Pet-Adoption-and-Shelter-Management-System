@@ -17,8 +17,7 @@ import java.util.List;
 @Table(name = "pet")
 public class Pet {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pet_id")
+    @GeneratedValue
     private Long petId;
     private String petName;
     private String species;
@@ -50,6 +49,7 @@ public class Pet {
     private Shelter shelter;
 
     @ManyToMany(mappedBy = "requestedPets")
+    @JsonIgnore
     List<Adopter> pendingAdopters;
     public Pet(String petName, String species, String breed, String color, String gender, String age, String healthStatus, String training, String vaccination, String spayNeuter, String behavior) {
         this.petName = petName;

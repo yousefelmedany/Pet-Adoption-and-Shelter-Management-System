@@ -13,4 +13,7 @@ export class ShelterService {
   saveShelter(shelter: any): Observable<any> {
     return this.http.post(baseUrl + '/save', shelter);
   }
+  getAllShelters(): Observable<any> {
+    return this.http.get<any>(baseUrl + '/getall');
+  }
 }

@@ -10,7 +10,7 @@ export class AppComponent {
   constructor(private router: Router) {}
   ngOnInit() {
 
-    this.router.navigate(['/userpage/adoptionpage']);
+    this.router.navigate(['/userpage']);
 
   }
 }
