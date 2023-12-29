@@ -1,1 +1,46 @@
-<p>application works!</p>
+<div class="container">
+  <div class="top"></div>
+  <div *ngFor="let pet of pets; let i = index">
+    <div class="card">
+      <div class="bg-image hover-overlay">
+        <img [src]="images[i]" class="img-fluid" />
+        <a href="#!">
+          <div
+            class="mask"
+            style="background-color: rgba(251, 251, 251, 0.15)"
+          ></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ pet.petName }}</h5>
+        <hr />
+        <table>
+          <tr>
+            <td><strong>Specie: </strong>{{ pet.species }}</td>
+            <td><strong>Breed: </strong>{{ pet.breed }}</td>
+          </tr>
+          <tr>
+            <td><strong>Color: </strong>{{ pet.color }}</td>
+            <td><strong>Gender: </strong>{{ pet.gender }}</td>
+          </tr>
+          <tr>
+            <td><strong>Age: </strong>{{ pet.age }}</td>
+            <td><strong>Health Status: </strong>{{ pet.healthStatus }}</td>
+          </tr>
+          <tr>
+            <td><strong>Training: </strong>{{ pet.training }}</td>
+            <td><strong>Vaccination: </strong>{{ pet.vaccination }}</td>
+          </tr>
+          <tr>
+            <td><strong>Spay Neuter: </strong>{{ pet.spayNeuter }}</td>
+            <td><strong>Behaviour: </strong>{{ pet.behavior }}</td>
+          </tr>
+        </table>
+        <hr />
+        <label class="approved" *ngIf="isApproved == true">Approved <i class="fa-regular fa-circle-check"></i></label>
+        <label class="pending" *ngIf="isPending == true">Pending <i class="fa-solid fa-clock"></i></label>
+        <label class="rejected" *ngIf="isRejected == true">Rejected <i class="fa-regular fa-circle-xmark"></i></label>
+      </div>
+    </div>
+  </div>
+</div>
