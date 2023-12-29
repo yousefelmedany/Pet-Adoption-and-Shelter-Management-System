@@ -22,7 +22,6 @@ public class Staff {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "managedShelterId", referencedColumnName = "shelterId")
     private Shelter shelter;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "workAtShelterId", referencedColumnName = "shelterId")
     private Shelter staff;
