@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StaffPageComponent } from './staff-page/staff-page.component';
 import { ManageAdoptionComponent } from './manage-adoption/manage-adoption.component';
 import { ManagepetsComponent } from './managepets/managepets.component';
+import { DocumentPageComponent } from './document-page/document-page.component';
 export const routes: Routes = [
   {
     path: '',
@@ -20,7 +21,11 @@ export const routes: Routes = [
       {
         path: 'manageadoption',
         component: ManageAdoptionComponent
-      }
+      },
+      {
+        path: 'documentpage',
+        component: DocumentPageComponent
+      },
     ]
   }
 ];

@@ -7,12 +7,14 @@ import { StaffPageComponent } from './staff-page/staff-page.component';
 import { ManagepetsComponent } from './managepets/managepets.component';
 import { ManageAdoptionComponent } from './manage-adoption/manage-adoption.component';
 import { FormsModule } from '@angular/forms';
+import { DocumentPageComponent } from './document-page/document-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     StaffPageComponent,
     ManagepetsComponent,
-    ManageAdoptionComponent
+    ManageAdoptionComponent,
+    DocumentPageComponent
   ],
   imports: [
     BrowserModule,

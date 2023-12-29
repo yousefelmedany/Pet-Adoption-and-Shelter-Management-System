@@ -33,9 +33,9 @@
     gap:2rem;
 }
 .btn button{
-    width: 10rem;
+    width: 7.8rem;
     height: 3rem;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     font-weight: 500;
     border-radius: 0.5rem;
     border: none;
@@ -48,6 +48,7 @@
 }
 .top{
     display: flex;
+    flex-direction: column;
     width: 40vw;
     height: 5rem;
     font-size: 2rem;

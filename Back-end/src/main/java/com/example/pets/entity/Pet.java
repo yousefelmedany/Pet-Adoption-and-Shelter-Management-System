@@ -18,7 +18,7 @@ import java.util.List;
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int petId;
+    private Long petId;
     private String petName;
     private String species;
     private String breed;
@@ -49,6 +49,21 @@ public class Pet {
     private Shelter shelter;
     private String status;
     private LocalDate date;
+
+    public Pet(String petName, String species, String breed, String color, String gender, String age, String healthStatus, String training, String vaccination, String spayNeuter, String behavior, String status) {
+        this.petName = petName;
+        this.species = species;
+        this.breed = breed;
+        this.color = color;
+        this.gender = gender;
+        this.age = age;
+        this.healthStatus = healthStatus;
+        this.training = training;
+        this.vaccination = vaccination;
+        this.spayNeuter = spayNeuter;
+        this.behavior = behavior;
+        this.status = status;
+    }
 }
 
 
