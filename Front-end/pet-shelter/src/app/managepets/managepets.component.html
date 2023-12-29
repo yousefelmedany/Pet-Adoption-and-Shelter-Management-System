@@ -1,7 +1,7 @@
 <div class="container">
   <div class="top">
     <button
-      class="btn btn-primary"
+      class="btn btn-dark"
       data-toggle="modal"
       data-target="#exampleModalCenter"
     >
@@ -30,7 +30,7 @@
           <a class="dropdown-item" href="#">Separated link</a>
         </div>
         <button class="btn btn-success" type="button" style="height: 5vh">
-          Search
+          Search<i class="fa-solid fa-search"></i>
         </button>
       </div>
     </div>
@@ -38,11 +38,7 @@
   <div *ngFor="let pet of pets; let i = index">
     <div class="card">
       <div class="bg-image hover-overlay">
-        <img
-          [src]="images[i]"
-          class="img-fluid"
-          style="width: 40vw; height: 50vh"
-        />
+        <img [src]="images[i]" class="img-fluid" />
         <a href="#!">
           <div
             class="mask"
@@ -52,40 +48,28 @@
       </div>
       <div class="card-body">
         <h5 class="card-title">{{ pet.petName }}</h5>
-        <hr />
-        <div class="tgme3a">
-          <p class="card-text"><strong>Specie: </strong>{{ pet.species }}</p>
-          <p class="card-text"><strong>Breed: </strong>{{ pet.breed }}</p>
-        </div>
-        <hr />
-        <div class="tgme3a">
-          <p class="card-text"><strong>Color: </strong>{{ pet.color }}</p>
-          <p class="card-text"><strong>Gender: </strong>{{ pet.gender }}</p>
-        </div>
-        <hr />
-        <div class="tgme3a">
-          <p class="card-text"><strong>Age: </strong>{{ pet.age }}</p>
-          <p class="card-text">
-            <strong>Health Status: </strong>{{ pet.healthStatus }}
-          </p>
-        </div>
-        <hr />
-        <div class="tgme3a">
-          <p class="card-text"><strong>Training: </strong>{{ pet.training }}</p>
-          <p class="card-text">
-            <strong>Vaccination: </strong>{{ pet.vaccination }}
-          </p>
-        </div>
-        <hr />
-        <div class="tgme3a">
-          <p class="card-text">
-            <strong>Spay Neuter: </strong>{{ pet.spayNeuter }}
-          </p>
-          <p class="card-text">
-            <strong>Behaviour: </strong>{{ pet.behavior }}
-          </p>
-        </div>
-        <hr />
+        <table class="table table-striped">
+          <tr>
+            <td><strong>Specie: </strong>{{ pet.species }}</td>
+            <td><strong>Breed: </strong>{{ pet.breed }}</td>
+          </tr>
+          <tr>
+            <td><strong>Color: </strong>{{ pet.color }}</td>
+            <td><strong>Gender: </strong>{{ pet.gender }}</td>
+          </tr>
+          <tr>
+            <td><strong>Age: </strong>{{ pet.age }}</td>
+            <td><strong>Health Status: </strong>{{ pet.healthStatus }}</td>
+          </tr>
+          <tr>
+            <td><strong>Training: </strong>{{ pet.training }}</td>
+            <td><strong>Vaccination: </strong>{{ pet.vaccination }}</td>
+          </tr>
+          <tr>
+            <td><strong>Spay Neuter: </strong>{{ pet.spayNeuter }}</td>
+            <td><strong>Behaviour: </strong>{{ pet.behavior }}</td>
+          </tr>
+        </table>
         <div class="btn">
           <button
             class="btn btn-dark"
@@ -109,10 +93,10 @@
             data-target="#document"
             (click)="setindex(i)"
           >
-            Add Document<i class="fa-solid fa-pen"></i>
+            Add Document<i class="fa-solid fa-add"></i>
           </button>
-          <button class="btn btn-primary" (click)="getPetDocuments(i)">
-            view documents<i class="fa-solid fa-pen"></i>
+          <button class="btn btn-secondary" (click)="getPetDocuments(i)">
+            View documents<i class="fa-solid fa-eye"></i>
           </button>
         </div>
       </div>

@@ -1,31 +1,41 @@
 <html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+  <div id="container">
+    <div id="sidebar">
+      <div class="top" style="display: flex">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa-solid fa-paw fa-3x"></i>
+        <a id="Name">Petito &nbsp;</a>
+        <i class="fa-solid fa-paw fa-3x"></i>
+      </div>
 
-<div id="container">
-        <div id="sidebar">
-            <div class="top" style="display: flex;">
-                <i class="fa-solid fa-paw fa-3x"></i>
-              <a id="Name" >PetShelter</a>
-            </div>
-            
-            <div id="menu">
-              <a routerLink="managepets" routerLinkActive="active"><i class="fa-solid fa-cat"></i> Manage Pets</a>
-              <a routerLink="manageadoption" routerLinkActive="active"><i class="fa-solid fa-envelope-circle-check"></i> Manage Adoption</a>
-              <a routerLink="staffprofile" routerLinkActive="active"><i class="fa fa-user-edit icon"></i> Profile</a>
-       
-            </div>
+      <div id="menu">
+        <a routerLink="managepets" routerLinkActive="active"
+          ><i class="fa-solid fa-cat"></i> Manage Pets</a
+        >
+        <a routerLink="manageadoption" routerLinkActive="active"
+          ><i class="fa-solid fa-envelope-circle-check"></i> Manage Adoption</a
+        >
+        <a routerLink="staffprofile" routerLinkActive="active"
+          ><i class="fa fa-user-edit icon"></i> Profile</a
+        >
+      </div>
 
-            <div id="sidebar-end-block">
-              <a> <i class="fas fa-sign-out-alt icon" (click)="logout()"></i> Logout</a>
-            </div>
-          </div>
-        
-        <div id="content">
-            <router-outlet></router-outlet>
-        </div>
+      <div id="sidebar-end-block">
+        <a>
+          <i class="fas fa-sign-out-alt icon" (click)="logout()"></i> Logout</a
+        >
+      </div>
     </div>
 
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </html>
