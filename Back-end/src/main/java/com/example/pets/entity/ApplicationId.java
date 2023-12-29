@@ -20,9 +20,14 @@ public class ApplicationId implements Serializable {
         return Objects.equals(adopter, applicationId.adopter) &&
                 Objects.equals(pet, applicationId.pet);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(adopter, pet);
+
+
+    }
+    public ApplicationId(Long adopter, Long pet){
+        this.adopter = adopter;
+        this.pet = pet;
     }
 }
