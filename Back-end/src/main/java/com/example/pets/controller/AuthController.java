@@ -70,7 +70,7 @@ public class AuthController {
 
 
 
-    @GetMapping("/getMe")
+    @PostMapping("/getMe")
     public ResponseEntity<?> getMe(@RequestBody UserInfoDTO userInfoDTO) {
         return ResponseEntity.ok().body(service.getMe(userInfoDTO));
     }
