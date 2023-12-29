@@ -234,10 +234,8 @@ label {
   background-color: gold;
 }
 .approved {
-  color: white;
   background-color: green;
 }
 .rejected {
-  color: white;
-  background-color: rgb(177, 0, 0);
+  background-color: red;
 }
