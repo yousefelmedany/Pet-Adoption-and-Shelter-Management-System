@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="image"></div>
+    <div>
+        <h2>Sign Up</h2>
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <label for="role">Select Role:</label>
+            <button class="role_btn" type="button" (click)="onChangeRole('MANAGER')">Manager</button>
+            <button class="role_btn" type="button" (click)="onChangeRole('STAFF')">Staff</button>
+            <button class="role_btn" type="button" (click)="onChangeRole('ADOPTER')">Adopter</button>
+
+            <label for="username">Name:</label>
+            <input type="text" formControlName="username" placeholder="Enter username" >
+            <label for="email">Email:</label>
+            <input type="email" formControlName="email" placeholder="Enter email" >
+            <label for="password">Password:</label>
+            <input type="password" formControlName="password" placeholder="Enter password" >
+            <label for="address">Address:</label>
+            <input type="text" formControlName="address" placeholder="Enter address" >
+            <label for="phone">Phone:</label>
+            <input type="text" formControlName="phone" placeholder="Enter phone" >
+            <label *ngIf="selectedRole !== 'ADOPTER'" for="birthdate">Birthdate:</label>
+            <input type="date" formControlName="birthdate" *ngIf="selectedRole !== 'ADOPTER'">
+            <div *ngIf="selectedRole === 'STAFF'">
+                <label for="shelter">Shelter:</label>
+                <select formControlName="shelter">
+                    <option value="shelter1">Shelter 1</option>
+                    <option value="shelter2">Shelter 2</option>
+                </select>
+            </div>
+            <br>
+            <button type="submit" [disabled]="signupForm.invalid" [class.disabled]="signupForm.invalid || loading">
+                
+              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                
+                Sign Up</button>
+        </form>
+        <p id="signup">
+            Already a member?
+            <a routerLink="/signin">Sign in now</a>
+        </p>
+    </div>
+</div>

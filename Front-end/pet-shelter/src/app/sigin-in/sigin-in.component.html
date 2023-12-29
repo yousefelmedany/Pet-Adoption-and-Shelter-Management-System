@@ -1,0 +1,24 @@
+<!-- sign-in.component.html -->
+<div class="container">
+    <div class="image"></div>
+    <div class="form">
+        <h2>Sign In</h2>
+    
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <br>
+            <label for="username">Email:</label>
+            <input type="text" formControlName="email" placeholder="Enter username" required>
+            <label for="password">Password:</label>
+            <input type="password" formControlName="password" placeholder="Enter password" required>
+            <button type="submit" [disabled]="signInForm.invalid" [class.disabled]="signInForm.invalid||loading">
+                
+              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                
+                Sign In</button>
+        </form>
+        <p id="signup">
+            Not a member yet?
+            <a routerLink="/signup">Sign up now</a>
+        </p>
+    </div>
+</div>
