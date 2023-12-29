@@ -25,23 +25,22 @@ export class StaffProfileComponent implements OnInit {
   spinner_flag: boolean = false;
   user!:{name:string,role:any,personId:number,email:string}
   constructor(private service:AuthService,private storage:StorageService) { 
-    this.user = this.storage.getUser();
-    console.log(this.user)
-    this.service.getCurrentUser().subscribe(
-      {
-        next: (response) => {
-          this.staff = response;
-          this.staff.email=this.user.email
-          this.staff.role=this.user.role[0]
-          console.log('Response', response);
-          this.originalstaff = { ...this.staff };
-        },
-        error: (err) => {
-          console.warn('Error', err);
-        }
-      }
-    )
-
+    this.staff = this.storage.getStaff();
+    // console.log(this.user)
+    // this.service.getCurrentUser().subscribe(
+    //   {
+    //     next: (response) => {
+    //       this.staff = response;
+    //       this.staff.email=this.user.email
+    //       this.staff.role=this.user.role[0]
+    //       console.log('Response', response);
+    //       this.originalstaff = { ...this.staff };
+    //     },
+    //     error: (err) => {
+    //       console.warn('Error', err);
+    //     }
+    //   }
+    // )
   }
   ngOnInit(): void {
  

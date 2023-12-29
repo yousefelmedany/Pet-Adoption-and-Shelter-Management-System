@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 const USER_KEY = 'auth-user';
+
 const ADOPTER_KEY='auth-adopter';
+
+const STAFF_KEY='staff'
+
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
+
   constructor() { }
 
   clean(): void {
@@ -38,5 +43,16 @@ export class StorageService {
       return true;
     }
     return false;
+  }
+  saveStaff(staff: any) {
+    window.localStorage.removeItem(STAFF_KEY);
+    if (staff != null) window.localStorage.setItem(STAFF_KEY, JSON.stringify(staff));
+  }
+  getStaff(): any {
+    const staff = window.localStorage.getItem(STAFF_KEY);
+    if (staff) {
+      return JSON.parse(staff);
+    }
+    return null;
   }
 }

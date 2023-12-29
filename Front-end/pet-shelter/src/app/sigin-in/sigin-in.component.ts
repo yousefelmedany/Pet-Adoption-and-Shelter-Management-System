@@ -41,6 +41,7 @@ export class SiginInComponent {
           this.storage.saveUser(response)
           this.spinner.hide()
           this.loading=false
+          this.routeToPage(response.role[0])
         },
         error: (err) => {
           console.warn('Error', err);
@@ -50,5 +51,15 @@ export class SiginInComponent {
       }
     )
   }
+  routeToPage(role:string){
+    if(role==="ADOPTER"){
+      this.router.navigate(['/userpage']);
+    }
+    else{
+      
+      this.router.navigate(['/staffpage']);
+    }
+  }
+
 
 }
