@@ -24,10 +24,11 @@ public class Shelter {
     @OneToOne(mappedBy = "shelter")
     @JsonIgnoreProperties("shelter")
     private Staff shelterAdmin;
-    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
+
     private List<Staff> staffs;
-    @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Pet> pets;
 }

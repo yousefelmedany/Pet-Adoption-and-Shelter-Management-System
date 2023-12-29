@@ -1,5 +1,7 @@
 package com.example.pets.service;
 
+import com.example.pets.dto.APIResponse;
+import com.example.pets.dto.ShelterDto;
 import com.example.pets.entity.Shelter;
 import com.example.pets.entity.Staff;
 import com.example.pets.repository.ShelterRepository;
@@ -46,5 +48,10 @@ public class ShelterService implements IShelterService{
     @Override
     public List<Shelter> getAllShelters() {
         return shelterRepository.findAll();
+    }
+
+    @Override
+    public List<ShelterDto> getShelterNames() {
+        return shelterRepository.findAllShelters();
     }
 }

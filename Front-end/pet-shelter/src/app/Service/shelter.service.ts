@@ -22,4 +22,9 @@ export class ShelterService {
   getAllShelters(): Observable<any> {
     return this.http.get<any>(baseUrl + '/getall');
   }
+  getSheltersNames(): Observable<any> {
+    return this.http.get<any>(baseUrl + '/getShelterNames');
+  }
+  
+
 }

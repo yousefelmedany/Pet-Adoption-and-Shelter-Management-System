@@ -36,7 +36,7 @@ import { ChooseShelterComponent } from './choose-shelter/choose-shelter.componen
     DocumentPageComponent,
     ApplicationComponent,
     AddShelterComponent,
-    ManageShelterComponent
+    ManageShelterComponent,
     ChooseShelterComponent
   ],
   imports: [

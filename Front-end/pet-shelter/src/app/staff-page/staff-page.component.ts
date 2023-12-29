@@ -10,7 +10,6 @@ import { Staff } from '../Objects/Staff';
   styleUrls: ['./staff-page.component.css'],
 })
 export class StaffPageComponent implements OnInit {
-  constructor(private storage: StorageService, private router: Router) {}
   user!:{name:string,role:any,personId:number,email:string}
   staff!: Staff;
   role!:String

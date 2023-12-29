@@ -1,5 +1,7 @@
 package com.example.pets.controller;
 
+import com.example.pets.dto.APIResponse;
+import com.example.pets.dto.ShelterDto;
 import com.example.pets.entity.Shelter;
 import com.example.pets.service.IShelterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +28,9 @@ public class ShelterController {
     @GetMapping("/getall")
     public List<Shelter> getAllShelters() {
         return shelterService.getAllShelters();
+    }
+    @GetMapping("/getShelterNames")
+    public List<ShelterDto> getShelterNames() {
+        return shelterService.getShelterNames();
     }
 }
