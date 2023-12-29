@@ -10,6 +10,8 @@ import { UserpageComponent } from './userpage/userpage.component';
 import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
 import { DocumentPageComponent } from './document-page/document-page.component';
 import { ApplicationComponent } from './application/application.component';
+import { AddShelterComponent } from './add-shelter/add-shelter.component';
+import { ManageShelterComponent } from './manage-shelter/manage-shelter.component';
 import { ChooseShelterComponent } from './choose-shelter/choose-shelter.component';
 export const routes: Routes = [
   {
@@ -32,6 +34,14 @@ export const routes: Routes = [
       {
         path: 'managepets',
         component: ManagepetsComponent
+      },
+      {
+        path: 'addshelter',
+        component: AddShelterComponent
+      },
+      {
+        path: 'manageshelter',
+        component: ManageShelterComponent
       },
       {
         path: 'staffprofile',

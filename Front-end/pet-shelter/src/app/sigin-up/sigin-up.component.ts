@@ -3,20 +3,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../Service/auth.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ShelterService } from '../Service/shelter.service';
 
 @Component({
   selector: 'app-sigin-up',
   templateUrl: './sigin-up.component.html',
   styleUrls: ['./sigin-up.component.css']
 })
-export class SiginUpComponent {
+export class SiginUpComponent implements OnInit{
   roles = ['ADOPTER', 'STAFF', 'MANAGER']; // Add more roles as needed
 
   selectedRole: string = '';
-  loading=false
+  loading=false;
   signupForm: FormGroup;
+  shelters!:[{shelterId:number,shelterName:String}];
+  noShelter=false;
 
-  constructor(private fb: FormBuilder,private service:AuthService,private router:Router,private spinner: NgxSpinnerService) {
+  constructor(private fb: FormBuilder,private service:AuthService,private router:Router,private spinner: NgxSpinnerService,private shelterService:ShelterService) {
     this.signupForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -26,6 +29,20 @@ export class SiginUpComponent {
       birthdate:[''],
       shelter:[''],
     });
+  }
+  ngOnInit(): void {
+    this.shelterService.getSheltersNames().subscribe(
+      {
+        next: (response) => {
+          this.shelters = response;
+          console.log(this.shelters)
+        },
+        error: (err) => {
+          console.warn('Error', err);
+        }
+      }
+    )
+
   }
 
   onChangeRole(role: string) {

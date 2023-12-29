@@ -2,10 +2,7 @@ package com.example.pets.service;
 
 import com.example.pets.dto.RegistrationDto;
 import com.example.pets.dto.UserInfoDTO;
-import com.example.pets.entity.Adopter;
-import com.example.pets.entity.Role;
-import com.example.pets.entity.Staff;
-import com.example.pets.entity.User;
+import com.example.pets.entity.*;
 import com.example.pets.repository.*;
 import com.example.pets.security.AppUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +23,8 @@ public class UserService implements IUserService, UserDetailsService {
     private final UserRepository userRepo;
     @Autowired
     private final RoleRepository roleRepository;
+    @Autowired
+    private final ShelterRepository shelterRepository;
     @Autowired
     private final UserRoleRepository userRoleRepository;
     @Autowired
@@ -52,7 +51,12 @@ public class UserService implements IUserService, UserDetailsService {
         }
         if (roles.contains("STAFF")) {
             User user1=user.toUser();
-            Staff staff = staffRepository.save(user.toStaff());
+
+            Staff staff = user.toStaff();
+            Shelter shelter = shelterRepository.findById(user.getShelterId()).orElse(null);
+            assert shelter != null;
+            staff.setStaff(shelter);
+            staffRepository.save(staff);
             user1.setPassword(passwordEncoder.encode(user1.getPassword()));
             user1.setRoles(Set.of(Objects.requireNonNull(roleRepository.findByName("STAFF").orElse(null))));
             user1.setPersonId(staff.getStaffId());
