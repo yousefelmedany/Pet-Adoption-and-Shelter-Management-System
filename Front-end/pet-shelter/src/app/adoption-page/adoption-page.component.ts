@@ -4,6 +4,7 @@ import { ShelterService } from '../Service/shelter.service';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Pet } from '../Objects/Pet';
+import { AdoptionService } from '../Service/adoption.service';
 declare const $: any;
 
 @Component({
@@ -16,7 +17,8 @@ export class AdoptionPageComponent implements OnInit {
     private petService: PetService,
     private shelterService: ShelterService,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private adoptionService: AdoptionService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +41,8 @@ export class AdoptionPageComponent implements OnInit {
   newPet: Pet = new Pet();
   selectedFile!: File;
   images: any[] = [];
+  description: any = 'ok';
+  index: any = 0;
 
   convertToImage(string: any) {
     const binaryString = atob(string);
@@ -54,5 +58,15 @@ export class AdoptionPageComponent implements OnInit {
   close() {
     $('#exampleModalCenter').modal('hide');
     $('#notify').modal('hide');
+  }
+  set_index(i: any) {
+    this.index = i;
+  }
+  fill_application() {
+    this.adoptionService
+      .make_adoption_request(10, this.pets[this.index].petId, this.description)
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }
