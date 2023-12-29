@@ -1,47 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { PetService } from '../Service/pet.service';
-import { ShelterService } from '../Service/shelter.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { AdoptionService } from '../Service/adoption.service';
-import { SharedService } from '../Service/shared.service';
-import { Pet } from '../Objects/Pet';
-import { Shelter } from '../Objects/Shelter';
-declare const $: any;
+import { StaffService } from '../Service/staff.service';
+import { Application } from '../Objects/Application';
 
 @Component({
   selector: 'app-manage-adoption',
   templateUrl: './manage-adoption.component.html',
-  styleUrls: ['./manage-adoption.component.css'],
+  styleUrls: ['./manage-adoption.component.css']
 })
 export class ManageAdoptionComponent implements OnInit {
-  constructor(
-    private petService: PetService,
-    private shelterService: ShelterService,
-    private router: Router,
-    private sanitizer: DomSanitizer,
-    private adoptionService: AdoptionService,
-    private sharedService: SharedService
-  ) {}
 
-  ngOnInit(): void {}
+  Applications: Application[] = [];
+  constructor(private staffservice:StaffService) { }
+  
+  
+  ngOnInit(): void {  
+    this.staffservice.GetPendingRequests().subscribe(
+      (data) => {
+        this.Applications = data;
+        console.log(this.Applications);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
-  pets: Pet[] = [];
-  spinner_flag: boolean = false;
-  newPet: Pet = new Pet();
-  selectedFile!: File;
-  images: any[] = [];
-  description: any = '';
-  currentShelter: Shelter = this.sharedService.getChoosedShelter();
+  Approve(i:any){
+    this.staffservice.AcceptApplication(this.Applications[i].adopter.adopterId,this.Applications[i].pet.petId).subscribe(
+      (data) => {
+        this.Applications = data;
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
-  convertToImage(string: any) {
-    const binaryString = atob(string);
-    const binaryData = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-      binaryData[i] = binaryString.charCodeAt(i);
-    }
-    const blob = new Blob([binaryData], { type: 'application/image' });
-    const blobUrl = URL.createObjectURL(blob);
-    return this.sanitizer.bypassSecurityTrustUrl(blobUrl) as SafeUrl;
+  Decline(i:any){
+    this.staffservice.DeclineApplication(this.Applications[i].adopter.adopterId,this.Applications[i].pet.petId).subscribe(
+      (data) => {
+        console.log(data);
+      this.Applications.splice(i,1);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

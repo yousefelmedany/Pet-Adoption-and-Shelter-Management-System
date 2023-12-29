@@ -1,5 +1,5 @@
 <div class="container">
-  <div>
+  <div *ngFor="let app of Applications; let i = index">
     <div class="card">
       <div class="bg-image hover-overlay" style="text-align: center;">
         <img src="../../assets/loza.jpg" class="img-fluid" />
@@ -11,44 +11,43 @@
         </a>
       </div>
       <div class="card-body">
-        <h5 class="card-title"><strong>Pet:</strong>&nbsp;Loza</h5>
+        <h5 class="card-title"><strong>Pet:</strong> {{app.pet.petName}}</h5>
         <hr />
         <table>
           <tr>
-            <td><strong>Specie: </strong>Sherazy</td>
-            <td><strong>Vaccination: </strong>Not Vaccinated</td>
+            <td><strong>Specie: </strong>{{app.pet.species}}</td>
+            <td><strong>Vaccination: </strong>{{app.pet.vaccination}}</td>
           </tr>
           <tr>
-            <td><strong>Color: </strong>Grey</td>
-            <td><strong>Gender: </strong>Female</td>
+            <td><strong>Color: </strong>{{app.pet.color}}</td>
+            <td><strong>Gender: </strong>{{app.pet.gender}}</td>
           </tr>
           <tr>
-            <td><strong>Age: </strong>1 year</td>
-            <td><strong>Health Status: </strong>Good</td>
+            <td><strong>Age: </strong>{{app.pet.age}} year</td>
+            <td><strong>Health Status: </strong>{{app.pet.healthStatus}}</td>
           </tr>
         </table>
         <hr />
       </div>
       <div class="card-body">
-        <h5 class="card-title"><strong>Adopter:</strong> &nbsp; Aboelwafa</h5>
+        <h5 class="card-title"><strong>Adopter:</strong>{{app.adopter.name}}</h5>
         <hr />
         <table>
           <tr>
-            <td><strong>Contact Number: </strong>01205073541</td>
+            <td><strong>Contact Number: </strong>{{app.adopter.phone}}</td>
           </tr>
           <tr>
             <td>
-              <strong>Description: </strong> <br /><br />I will take Care of
-              Loza
+              <strong>Description: </strong> <br /><br />{{app.description}}
             </td>
           </tr>
         </table>
         <hr />
         <div class="btn">
-          <button class="btn btn-success">
+          <button (click)="Approve(i)" class="btn btn-success">
             Approve <i class="fa-solid fa-check"></i>
           </button>
-          <button class="btn btn-danger">
+          <button (click)="Decline(i)" class="btn btn-danger">
             Reject <i class="fa-regular fa-circle-xmark"></i>
           </button>
         </div>

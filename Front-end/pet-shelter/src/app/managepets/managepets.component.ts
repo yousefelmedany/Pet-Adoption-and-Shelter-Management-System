@@ -31,7 +31,7 @@ images: any[] = [];
 document:Document=new Document();
 PetDocuments:Document[]=[];
 index:number=0;
-  ngOnInit(): void {
+ngOnInit(): void {
     this.petService.getAllPetsInShelter(5).subscribe(
       (data) => {
         this.pets = data;

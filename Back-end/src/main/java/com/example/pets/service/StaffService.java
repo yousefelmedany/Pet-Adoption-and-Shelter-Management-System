@@ -3,11 +3,15 @@ package com.example.pets.service;
 
 import com.example.pets.entity.*;
 import com.example.pets.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@RequiredArgsConstructor
+@org.springframework.stereotype.Service
 public class StaffService implements IStaffService{
     @Autowired
     PetRepository petRepository;
@@ -20,22 +24,31 @@ public class StaffService implements IStaffService{
     @Autowired
     StaffRepository staffRepository;
 
+
+
+
+
     @Override
     public List<Application> GetPendinRequests() {
         return applicationRepository.findByStatus("Pending");
     }
     @Override
-    public boolean AcceptApplication(long AdopterId, long PetId) {
+    public List<Application> AcceptApplication(long AdopterId, long PetId) {
 
         ApplicationId Id = new ApplicationId(AdopterId, PetId);
         Optional<Application> currapp = applicationRepository.findById(Id);
         currapp.get().setStatus("Approved");
         applicationRepository.save(currapp.get());
 
+        List<Application> remaining = applicationRepository.getremainingpendingrequests(PetId);
+        for(int i=0;i<remaining.size();i++){
+            remaining.get(i).setStatus("Removed");
+            applicationRepository.save(remaining.get(i));
+        }
         Optional<Pet> pet = petRepository.findById(PetId);
         pet.get().setAdopter(adopterRepository.getById(AdopterId));
 
-        return petRepository.save(pet.get()) != null;
+        return applicationRepository.findByStatus("Pending");
     }
     @Override
     public boolean DeclineApplication(long AdopterId, long PetId) {
@@ -55,29 +68,4 @@ public class StaffService implements IStaffService{
         return staffRepository.save(newstaff);
     }
 
-    @Override
-    public List<Pet> GetPets(long ShelterId) {
-        return shelterRepository.findById(ShelterId).get().getPets();
-    }
-
-    @Override
-    public Pet AddPet(Pet newpet) {
-        return petRepository.save(newpet);
-    }
-
-    @Override
-    public void DeletePet(long PetId) {
-        petRepository.deleteById(PetId);
-    }
-
-    @Override
-    public Pet UpdatePet(Pet newpet) {
-        Pet pet = petRepository.getById(newpet.getPetId());
-        pet.setImage(newpet.getImage());
-        pet.setAge(newpet.getAge());
-        pet.setPetName(newpet.getPetName());
-        pet.setBreed(newpet.getBreed());
-        pet.setBehavior(newpet.getBehavior());
-        return petRepository.save(pet);
-    }
 }
