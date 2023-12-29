@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { DocumentPageComponent } from './document-page/document-page.component';
 import { UserpageComponent } from './userpage/userpage.component';
 import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
+import { ApplicationComponent } from './application/application.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
     ManageAdoptionComponent,
     UserpageComponent,
     AdoptionPageComponent,
-    DocumentPageComponent
+    DocumentPageComponent,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,
