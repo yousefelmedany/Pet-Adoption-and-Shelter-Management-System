@@ -32,7 +32,6 @@ export class ManageAdoptionComponent implements OnInit {
   selectedFile!: File;
   images: any[] = [];
   description: any = '';
-  index: any = 0;
   currentShelter: Shelter = this.sharedService.getChoosedShelter();
 
   convertToImage(string: any) {
@@ -44,13 +43,5 @@ export class ManageAdoptionComponent implements OnInit {
     const blob = new Blob([binaryData], { type: 'application/image' });
     const blobUrl = URL.createObjectURL(blob);
     return this.sanitizer.bypassSecurityTrustUrl(blobUrl) as SafeUrl;
-  }
-
-  close() {
-    $('#exampleModalCenter').modal('hide');
-    $('#notify').modal('hide');
-  }
-  set_index(i: any) {
-    this.index = i;
   }
 }

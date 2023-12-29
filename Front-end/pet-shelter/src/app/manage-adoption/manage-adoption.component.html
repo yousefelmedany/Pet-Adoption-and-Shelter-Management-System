@@ -1,9 +1,8 @@
 <div class="container">
-  <div class="top"></div>
-  <div *ngFor="let pet of pets; let i = index">
+  <div>
     <div class="card">
-      <div class="bg-image hover-overlay">
-        <img [src]="images[i]" class="img-fluid" />
+      <div class="bg-image hover-overlay" style="text-align: center;">
+        <img src="../../assets/loza.jpg" class="img-fluid" />
         <a href="#!">
           <div
             class="mask"
@@ -12,38 +11,45 @@
         </a>
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ pet.petName }}</h5>
+        <h5 class="card-title"><strong>Pet:</strong>&nbsp;Loza</h5>
         <hr />
         <table>
           <tr>
-            <td><strong>Specie: </strong>{{ pet.species }}</td>
-            <td><strong>Breed: </strong>{{ pet.breed }}</td>
+            <td><strong>Specie: </strong>Sherazy</td>
+            <td><strong>Vaccination: </strong>Not Vaccinated</td>
           </tr>
           <tr>
-            <td><strong>Color: </strong>{{ pet.color }}</td>
-            <td><strong>Gender: </strong>{{ pet.gender }}</td>
+            <td><strong>Color: </strong>Grey</td>
+            <td><strong>Gender: </strong>Female</td>
           </tr>
           <tr>
-            <td><strong>Age: </strong>{{ pet.age }}</td>
-            <td><strong>Health Status: </strong>{{ pet.healthStatus }}</td>
+            <td><strong>Age: </strong>1 year</td>
+            <td><strong>Health Status: </strong>Good</td>
+          </tr>
+        </table>
+        <hr />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><strong>Adopter:</strong> &nbsp; Aboelwafa</h5>
+        <hr />
+        <table>
+          <tr>
+            <td><strong>Contact Number: </strong>01205073541</td>
           </tr>
           <tr>
-            <td><strong>Training: </strong>{{ pet.training }}</td>
-            <td><strong>Vaccination: </strong>{{ pet.vaccination }}</td>
-          </tr>
-          <tr>
-            <td><strong>Spay Neuter: </strong>{{ pet.spayNeuter }}</td>
-            <td><strong>Behaviour: </strong>{{ pet.behavior }}</td>
+            <td>
+              <strong>Description: </strong> <br /><br />I will take Care of
+              Loza
+            </td>
           </tr>
         </table>
         <hr />
         <div class="btn">
-          <button
-            class="btn btn-dark"
-            data-toggle="modal"
-            data-target="#exampleModalCenter"
-          >
-            Fill Application<i class="fa-solid fa-file-signature"></i>
+          <button class="btn btn-success">
+            Approve <i class="fa-solid fa-check"></i>
+          </button>
+          <button class="btn btn-danger">
+            Reject <i class="fa-regular fa-circle-xmark"></i>
           </button>
         </div>
       </div>
