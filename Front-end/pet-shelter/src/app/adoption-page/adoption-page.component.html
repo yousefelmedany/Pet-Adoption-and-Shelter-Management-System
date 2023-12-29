@@ -1,6 +1,26 @@
 <div class="container">
+  <div class="group">
+    <input
+      type="text"
+      class="form-control"
+      aria-label="Text input with dropdown button"
+      placeholder="{{ filter }}"
+      [(ngModel)]="filterValue"
+      (input)="applyFilter()"
+    />
+    <select
+      class="form-select"
+      aria-label="Disabled select example"
+      style="height: 5vh"
+      [(ngModel)]="selectedValue"
+    >
+      <option value="Training">Training</option>
+      <option value="Vaccination">Vaccination</option>
+      <option value="spayNeuter">spayNeuter</option>
+    </select>
+  </div>
   <div class="top"></div>
-  <div *ngFor="let pet of pets; let i = index">
+  <div *ngFor="let pet of filteredPets; let i = index">
     <div class="card">
       <div class="bg-image hover-overlay" style="text-align: center;">
         <img [src]="images[i]" class="img-fluid" />
@@ -83,7 +103,7 @@
             type="text"
             name="forget_pass"
             id="forget_pass_input"
-            placeholder="Youssef Aboelwafa"
+            placeholder="{{ currentAdopter.name }}"
             disabled
           />
         </div>
@@ -93,7 +113,7 @@
             type="text"
             name="forget_pass"
             id="forget_pass_input"
-            placeholder="01234567890"
+            placeholder="{{ currentAdopter.phone }}"
             disabled
           />
         </div>

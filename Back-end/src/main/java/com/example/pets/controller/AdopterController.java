@@ -32,4 +32,8 @@ public class AdopterController {
     public List<Application> getApplicationsByAdopter(@RequestParam("adopterid") Long adopterId) {
         return adopterService.getApplicationsByAdopter(adopterId);
     }
+    @GetMapping("/getadopter")
+    public Adopter getAdopterById(@RequestParam("adopterid") Long adopterId) {
+        return adopterService.getAdopterById(adopterId);
+    }
 }

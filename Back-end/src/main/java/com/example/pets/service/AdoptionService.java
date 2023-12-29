@@ -52,13 +52,16 @@ public class AdoptionService implements IAdopterService{
         application.setAdopter(adopter);
         application.setPet(pet);
         application.setDescription(description);
-        application.setStatus("pending");
+        application.setStatus("Pending");
         return applicationRepository.save(application);
     }
     @Override
     public List<Application> getApplicationsByAdopter(Long adopterId) {
         return applicationRepository.findByAdopterAdopterId(adopterId);
     }
-
+@Override
+    public Adopter getAdopterById(Long adopterId) {
+        return adopterRepository.findById(adopterId).orElse(null);
+    }
 
 }

@@ -21,7 +21,7 @@ export class ManagepetsComponent implements OnInit {
     private router: Router,
     private sanitizer: DomSanitizer,
     private documentService:DocumentService,
-    private sharedService:SharedService
+    private sharedService:SharedService,
   ) {}
 pets: Pet[] = [];
 spinner_flag: boolean = false;
