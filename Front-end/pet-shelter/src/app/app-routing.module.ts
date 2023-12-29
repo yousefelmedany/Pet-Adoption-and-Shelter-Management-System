@@ -6,6 +6,7 @@ import { ManagepetsComponent } from './managepets/managepets.component';
 import { UserpageComponent } from './userpage/userpage.component';
 import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
 import { DocumentPageComponent } from './document-page/document-page.component';
+import { ApplicationComponent } from './application/application.component';
 export const routes: Routes = [
   {
     path: '',
@@ -37,6 +38,10 @@ export const routes: Routes = [
       {
         path: 'adoptionpage',
         component: AdoptionPageComponent
+      },
+      {
+        path: 'application',
+        component: ApplicationComponent
       },
     ]
   }
