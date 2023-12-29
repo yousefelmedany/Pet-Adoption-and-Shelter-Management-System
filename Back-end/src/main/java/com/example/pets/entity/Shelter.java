@@ -21,6 +21,7 @@ public class Shelter {
     private String shelterPhone;
 
     @OneToOne(mappedBy = "shelter", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Staff shelterAdmin;
 
     @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)

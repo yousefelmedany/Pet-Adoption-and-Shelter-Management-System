@@ -13,4 +13,5 @@ public interface IAdopterService {
     Adopter adoptPet(Long adopterId, Long petId);
     Application makeApplication(Long adopterId, Long petId, String description);
     List<Application> getApplicationsByAdopter(Long adopterId);
+    Adopter getAdopterById(Long adopterId);
 }
