@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../Service/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-staff-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private storage:StorageService,private router:Router) { }
 
   ngOnInit(): void {
+  }
+  logout(){
+    this.storage.clean()
+    this.router.navigate(['/signin']);
+    
+
   }
 
 }

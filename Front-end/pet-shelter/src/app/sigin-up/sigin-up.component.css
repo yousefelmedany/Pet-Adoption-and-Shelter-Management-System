@@ -1,0 +1,193 @@
+
+  
+  .container {
+    display: flex;
+    width: 100%; /* Adjust width as needed */
+    height: 100%; /* Adjust height as needed */
+    background-color: #fff;
+    border-radius: 10px;
+    background-color: rgb(234, 255, 234);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image {
+    flex: 0 0 300px; /* Adjust width as needed */
+    height: 100%;
+    background-image: url("../../assets/signin.jpeg"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .container > div {
+    flex: 1;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #outer {
+    background-color: #008081;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  #title {
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(234, 255, 234);
+    color: #333;
+  }
+  h1 {
+    margin-left: 5%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 50px;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .text-center {
+    display: flex;
+    background-color: rgb(234, 255, 234);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    font-size: 80px;
+    font-weight: 100;
+    color: #333;
+  }
+  .fa-solid {
+    color: #008081;
+    font-size: 70px;
+  }
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+  #choose-role {
+    margin-top: 2%;
+    text-decoration: solid;
+    font-size: 36px;
+    color: aliceblue;
+    font-weight: 700;
+    margin-left: 1.5%;
+  }
+  #inner {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-left: 2%;
+  }
+  label {
+    display: block;
+    color: black;
+    font-size: larger;
+    font-weight: 900;
+  }
+
+  button.disabled {
+    background-color: #ccc; /* Use your preferred gray color */
+    color: #666; /* Use a suitable text color for disabled state */
+    cursor: not-allowed; /* Change cursor to not-allowed */
+  }
+  
+  .role_btn {
+    background-color: lightgreen;
+    border: none;
+    color: #333;
+    padding: 15px 32px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    font-weight: 800;
+    font-size:large;
+    transition: 0.2s;
+  }
+  .role_btn:hover {
+    background-color: #008081;
+    color: white;
+    border: 5px solid lightgreen;
+    font-size: large;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .gradient-text {
+    font-family: "Permanent Marker", cursive;
+    background: linear-gradient(
+      90deg,
+      #333,
+      #2e8b57,
+      #333,
+      #006400,
+      #333,
+      #2e8b57,
+      #333,
+      #3cb371
+    );
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
+  }
+  
