@@ -1,0 +1,36 @@
+<div class="container">
+    <form *ngIf="Shelter" [formGroup]="shelterForm">
+      <div class="form-group">
+        <label for="name">Shelter name</label>
+        <input type="text" minlength="3" class="form-control" id="name" formControlName="shelterName" placeholder={{Shelter.shelterName}}
+          [readonly]="!isEditing" />
+      </div>
+      <div class="form-group">
+        <label for="phone">Shelter Phone</label>
+        <input class="form-control" placeholder={{Shelter.shelterPhone}} id="phone" formControlName="shelterPhone"
+          [readonly]="!isEditing" />
+      </div>
+      <div class="form-group">
+        <label for="address">Shelter Address</label>
+        <input class="form-control" id="address" formControlName="shelterAddress" placeholder={{Shelter.shelterAddress}}
+          [readonly]="!isEditing" />
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button class="btn btn-danger" (click)="deleteShelter()" [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Delete
+        </button>
+          <button class="btn btn-dark" (click)="toggleEdit()" [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            {{ isEditing ? 'Save' : 'Edit' }}
+            
+        </button>
+        </div>
+      </div>
+    </form>
+    <div *ngIf="!hasShelter">
+      <h1>No shelter found.</h1>
+    </div>
+  </div>
+  

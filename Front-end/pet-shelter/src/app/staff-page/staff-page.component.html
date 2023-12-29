@@ -12,9 +12,11 @@
             </div>
             
             <div id="menu">
-              <a routerLink="managepets" routerLinkActive="active"><i class="fa-solid fa-cat"></i> Manage Pets</a>
-              <a routerLink="manageadoption" routerLinkActive="active"><i class="fa-solid fa-envelope-circle-check"></i> Manage Adoption</a>
+              <a routerLink="managepets" *ngIf="role=='STAFF'" routerLinkActive="active"><i class="fa-solid fa-cat"></i> Manage Pets</a>
+              <a routerLink="manageadoption" *ngIf="role=='STAFF'" routerLinkActive="active"><i class="fa-solid fa-envelope-circle-check"></i> Manage Adoption</a>
               <a routerLink="staffprofile" routerLinkActive="active"><i class="fa fa-user-edit icon"></i> Profile</a>
+              <a routerLink="addshelter" *ngIf="role=='MANAGER'" routerLinkActive="active"><i class="fa fa-plus-circle icon"></i> Create Shelter</a>
+              <a routerLink="manageshelter" *ngIf="role=='MANAGER'" routerLinkActive="active"><i class="fa-solid fa-envelope-circle-check"></i> Manage Shelter </a>
        
             </div>
 

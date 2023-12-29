@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'pet-shelter';
   constructor(private router: Router) {}
   ngOnInit() {
-    this.router.navigate(['/userpage/application']);
+    this.router.navigate(['/staffpage']);
+    // this.router.navigate(['/signin']);
   }
 }
