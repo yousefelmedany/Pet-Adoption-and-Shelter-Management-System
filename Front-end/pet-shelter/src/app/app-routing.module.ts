@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { StaffPageComponent } from './staff-page/staff-page.component';
 import { ManageAdoptionComponent } from './manage-adoption/manage-adoption.component';
 import { ManagepetsComponent } from './managepets/managepets.component';
+import { UserpageComponent } from './userpage/userpage.component';
+import { AdoptionPageComponent } from './adoption-page/adoption-page.component';
 import { DocumentPageComponent } from './document-page/document-page.component';
 export const routes: Routes = [
   {
@@ -25,6 +27,16 @@ export const routes: Routes = [
       {
         path: 'documentpage',
         component: DocumentPageComponent
+      },
+    ]
+  },
+  {
+    path:'userpage',
+    component: UserpageComponent,
+    children: [
+      {
+        path: 'adoptionpage',
+        component: AdoptionPageComponent
       },
     ]
   }
