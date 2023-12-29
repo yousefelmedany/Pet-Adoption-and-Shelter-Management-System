@@ -229,6 +229,7 @@ label {
   padding: 20px;
   font-size: 30px;
   text-align: center;
+  color: black;
 }
 .pending {
   background-color: gold;
