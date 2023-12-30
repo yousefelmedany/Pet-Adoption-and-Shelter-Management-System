@@ -75,7 +75,7 @@ Addpet() {
   let formdata = new FormData();
   formdata.append('file', this.selectedFile);
   formdata.append('pet', JSON.stringify(this.newPet));
-  formdata.append('shelterid', '12');
+  formdata.append('shelterid', this.currStaff.staff.shelterId);
   this.petService.savePet(formdata).subscribe(
     (data) => {
       this.spinner_flag = false;

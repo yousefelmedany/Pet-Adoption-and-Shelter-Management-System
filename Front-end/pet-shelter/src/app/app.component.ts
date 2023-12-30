@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'pet-shelter';
   constructor(private router: Router) {
-    // const previousUrl = localStorage.getItem('previousUrl');
+    const previousUrl = localStorage.getItem('previousUrl');
 
-    // if (previousUrl) {
-    //   router.navigateByUrl(previousUrl);
-    //   localStorage.removeItem('previousUrl');
-    // }
-    this.router.navigate(['/signin']);
+    if (previousUrl) {
+      router.navigateByUrl(previousUrl);
+      localStorage.removeItem('previousUrl');
+    }
+
   }
 
 }

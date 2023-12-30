@@ -22,6 +22,7 @@ import { ApplicationComponent } from './application/application.component';
 import { AddShelterComponent } from './add-shelter/add-shelter.component';
 import { ManageShelterComponent } from './manage-shelter/manage-shelter.component';
 import { ChooseShelterComponent } from './choose-shelter/choose-shelter.component';
+import { NotificationComponent } from './notification/notification.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { ChooseShelterComponent } from './choose-shelter/choose-shelter.componen
     ApplicationComponent,
     AddShelterComponent,
     ManageShelterComponent,
-    ChooseShelterComponent
+    ChooseShelterComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

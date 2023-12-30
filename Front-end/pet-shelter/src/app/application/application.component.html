@@ -43,6 +43,7 @@
         <label class="approved" *ngIf="application.status=='Approved'">Approved <i class="fa-regular fa-circle-check"></i></label>
         <label class="pending" *ngIf="application.status=='Pending'">Pending <i class="fa-solid fa-clock"></i></label>
         <label class="rejected" *ngIf="application.status=='Rejected'">Rejected <i class="fa-regular fa-circle-xmark"></i></label>
+        <label class="rejected" *ngIf="application.status=='Removed'">Rejected <i class="fa-regular fa-circle-xmark"></i></label>
       </div>
     </div>
   </div>

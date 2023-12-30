@@ -13,6 +13,7 @@ import { ApplicationComponent } from './application/application.component';
 import { AddShelterComponent } from './add-shelter/add-shelter.component';
 import { ManageShelterComponent } from './manage-shelter/manage-shelter.component';
 import { ChooseShelterComponent } from './choose-shelter/choose-shelter.component';
+import { NotificationComponent } from './notification/notification.component';
 export const routes: Routes = [
   {
     path: '',
@@ -72,6 +73,10 @@ export const routes: Routes = [
       {
         path: 'chooseshelter',
         component: ChooseShelterComponent
+      },
+      {
+        path: 'notification',
+        component: NotificationComponent
       },
     ]
   }

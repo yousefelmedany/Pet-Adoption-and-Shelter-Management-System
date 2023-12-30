@@ -75,202 +75,7 @@
       </div>
     </div>
 
-    <div
-      class="modal fade"
-      id="exampleModalCenter"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Add Pet</h5>
-            <button class="outer_button" (click)="close()">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </button>
-          </div>
-
-          <div class="modal-body">
-            <h2>Pet Name :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.petName"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Specie :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.species"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Breed :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.breed"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Color :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.color"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Gender :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.gender"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Age :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.age"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Health Status :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.healthStatus"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Training :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.training"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Vaccination :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.vaccination"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Spay Neuter :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.spayNeuter"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Behaviour :</h2>
-            <input
-              type="text"
-              name="forget_pass"
-              id="forget_pass_input"
-              #new_pass
-              [(ngModel)]="newPet.behavior"
-            />
-          </div>
-          <div class="modal-body">
-            <h2>Pet Image :</h2>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Upload</span>
-              </div>
-              <div class="custom-file">
-                <input
-                  type="file"
-                  class="custom-file-input"
-                  id="inputGroupFile01"
-                  (change)="handleImageInput($event)"
-                />
-                <label class="custom-file-label" for="inputGroupFile01"
-                  >Choose file</label
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="Addpet()">
-              Add
-              <div
-                class="spinner-border text-light"
-                role="status"
-                *ngIf="spinner_flag == true"
-              ></div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="modal fade"
-      id="notify"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              successfuly Added
-            </h5>
-            <button class="outer_button" (click)="close()">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+   
 
     <div
       class="modal fade"
@@ -532,4 +337,200 @@
       </div>
     </div>
   </div>
+</div>
+<div
+class="modal fade"
+id="exampleModalCenter"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Add Pet</h5>
+      <button class="outer_button" (click)="close()">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <h2>Pet Name :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.petName"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Specie :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.species"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Breed :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.breed"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Color :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.color"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Gender :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.gender"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Age :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.age"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Health Status :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.healthStatus"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Training :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.training"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Vaccination :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.vaccination"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Spay Neuter :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.spayNeuter"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Behaviour :</h2>
+      <input
+        type="text"
+        name="forget_pass"
+        id="forget_pass_input"
+        #new_pass
+        [(ngModel)]="newPet.behavior"
+      />
+    </div>
+    <div class="modal-body">
+      <h2>Pet Image :</h2>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input
+            type="file"
+            class="custom-file-input"
+            id="inputGroupFile01"
+            (change)="handleImageInput($event)"
+          />
+          <label class="custom-file-label" for="inputGroupFile01"
+            >Choose file</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="Addpet()">
+        Add
+        <div
+          class="spinner-border text-light"
+          role="status"
+          *ngIf="spinner_flag == true"
+        ></div>
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div
+class="modal fade"
+id="notify"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">
+        successfuly Added
+      </h5>
+      <button class="outer_button" (click)="close()">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </button>
+    </div>
+  </div>
+</div>
 </div>
