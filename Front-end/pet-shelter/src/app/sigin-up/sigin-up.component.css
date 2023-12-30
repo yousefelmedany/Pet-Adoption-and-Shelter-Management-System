@@ -13,7 +13,7 @@
   .image {
     flex: 0 0 300px; /* Adjust width as needed */
     height: 100%;
-    background-image: url("../../assets/signin.jpeg"); /* Replace with your image path */
+    background-image: url("../../assets/dog2.jpg"); /* Replace with your image path */
     background-size: cover;
     background-position: center;
   }
