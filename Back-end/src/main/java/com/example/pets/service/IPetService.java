@@ -9,4 +9,8 @@ public interface IPetService {
     Pet editPet(Pet pet);
     void removePet(Long petId);
     List<Pet> getPetsByShelterId(Long shelterId);
+    void Backupdbtosql();
+
+
+    void Restoredbfromsql(String s);
 }

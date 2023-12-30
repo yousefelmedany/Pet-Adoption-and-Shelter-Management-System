@@ -36,4 +36,12 @@ public class PetController {
     public void removePet(@RequestParam("petid") Long petId){
         petService.removePet(petId);
     }
+    @GetMapping("/backup")
+    public void Backupdbtosql() {
+        petService.Backupdbtosql();
+    }
+    @GetMapping("/restore")
+    public void Restoredbfromsql() {
+        petService.Restoredbfromsql("backup.sql");
+    }
 }

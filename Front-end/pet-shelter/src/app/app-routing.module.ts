@@ -16,7 +16,7 @@ import { ChooseShelterComponent } from './choose-shelter/choose-shelter.componen
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'signin',
     pathMatch: 'full',
   },
   {
