@@ -110,8 +110,7 @@
       <button
         type="submit"
         class="btn btn-success btn-lg btn-block"
-        [disabled]="signupForm.invalid"
-        [class.disabled]="signupForm.invalid || loading"
+        [class.disabled]="signupForm.invalid"
       >
         <span
           *ngIf="loading"
