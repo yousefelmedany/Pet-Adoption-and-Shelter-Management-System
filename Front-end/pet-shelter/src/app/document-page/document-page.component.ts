@@ -16,12 +16,18 @@ export class DocumentPageComponent implements OnInit {
     private sanitizer: DomSanitizer,
   ) { }
 documents:Document[]=this.sharedService.getDocuments();
-documentBlobUrls: SafeUrl[] = [];
+documentBlobUrls: any[] = [];
 spinner_flag: boolean = false;
   ngOnInit(): void {
     for(let i=0;i<this.documents.length;i++){
       if(this.documents[i].documentType=="PDF"){
       const documentUrl = this.view_document(i);
+      if (documentUrl) {
+        this.documentBlobUrls.push(documentUrl);
+      }
+    }
+    else{
+      const documentUrl = this.convertToImage(this.documents[i].documentUrl);
       if (documentUrl) {
         this.documentBlobUrls.push(documentUrl);
       }
@@ -40,6 +46,16 @@ spinner_flag: boolean = false;
       return tempUrl;
     }
     return null;
+  }
+  convertToImage(string: any) {
+    const binaryString = atob(string);
+    const binaryData = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      binaryData[i] = binaryString.charCodeAt(i);
+    }
+    const blob = new Blob([binaryData], { type: 'application/image' });
+    const blobUrl = URL.createObjectURL(blob);
+    return this.sanitizer.bypassSecurityTrustUrl(blobUrl) as SafeUrl;
   }
   removeDocument(i:number){
     this.spinner_flag=true;

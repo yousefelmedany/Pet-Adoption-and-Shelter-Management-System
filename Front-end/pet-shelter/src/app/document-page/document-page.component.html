@@ -2,12 +2,14 @@
   <div class="grid-container">
     <div class="card" *ngFor="let document of documents; let i = index">
       <label>{{ document.documentName }}.{{ document.documentType }}</label>
-      <iframe
+
+      <iframe *ngIf="document.documentType == 'PDF'"
         [src]="documentBlobUrls[i]"
         width="100%"
-        height="100%"
+        style="height: 100%;"
         frameborder="0"
       ></iframe>
+      <img [src]="documentBlobUrls[i]" *ngIf="document.documentType!='PDF'" style="width: 100%;height: 100%;">
       <div class="card-footer" style="background-color: #fff;">
         <button class="btn btn-danger" (click)="removeDocument(i)">
           Remove

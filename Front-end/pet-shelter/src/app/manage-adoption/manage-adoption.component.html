@@ -2,7 +2,7 @@
   <div *ngFor="let app of Applications; let i = index">
     <div class="card">
       <div class="bg-image hover-overlay" style="text-align: center;">
-        <img src="../../assets/loza.jpg" class="img-fluid" />
+        <img [src]="images[i]" class="img-fluid" />
         <a href="#!">
           <div
             class="mask"

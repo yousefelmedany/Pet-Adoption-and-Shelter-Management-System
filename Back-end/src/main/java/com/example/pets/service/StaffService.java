@@ -52,7 +52,6 @@ public class StaffService implements IStaffService{
     }
     @Override
     public boolean DeclineApplication(long AdopterId, long PetId) {
-
         ApplicationId Id = new ApplicationId(AdopterId, PetId);
         Optional<Application> currapp = applicationRepository.findById(Id);
         currapp.get().setStatus("Rejected");
