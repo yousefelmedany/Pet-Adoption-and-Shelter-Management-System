@@ -14,7 +14,7 @@ export class AppComponent {
     //   router.navigateByUrl(previousUrl);
     //   localStorage.removeItem('previousUrl');
     // }
-    this.router.navigate(['/signup']);
+    this.router.navigate(['/signin']);
   }
 
 }
