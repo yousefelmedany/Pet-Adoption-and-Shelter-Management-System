@@ -1,0 +1,1 @@
+D:\mysql.exe  --host=localhost --port=3306 --user=scott --password=tiger < D:\backup.sql
