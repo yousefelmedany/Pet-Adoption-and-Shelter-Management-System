@@ -34,5 +34,9 @@ public class StaffController {
     public Staff UpdateStaffMember(@RequestBody Staff newstaff) {
         return this.staffservice.UpdateStaffMember(newstaff);
     }
+    @GetMapping("/getShelterOfStaff")
+    public long getShelterOfStaff(@RequestParam("staffId") long staffId){
+        return this.staffservice.getShelterOfStaff(staffId);
+    }
 
 }

@@ -47,7 +47,7 @@ public class StaffService implements IStaffService{
         }
         Optional<Pet> pet = petRepository.findById(PetId);
         pet.get().setAdopter(adopterRepository.getById(AdopterId));
-
+        petRepository.save(pet.get());
         return applicationRepository.findByStatus("Pending");
     }
     @Override
@@ -66,6 +66,12 @@ public class StaffService implements IStaffService{
         staff.setBirthDate(newstaff.getBirthDate());
         staff.setPhone(newstaff.getPhone());
         return staffRepository.save(newstaff);
+    }
+    @Override
+    public Long getShelterOfStaff(long staffId) {
+        Staff staff = staffRepository.findById(staffId).orElse(null);
+        if(staff==null) return null;
+        return staff.getShelter().getShelterId();
     }
 
 }

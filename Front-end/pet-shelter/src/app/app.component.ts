@@ -7,8 +7,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'pet-shelter';
-  constructor(private router: Router) {}
-  ngOnInit() {
-    this.router.navigate(['/signin']);
+  constructor(private router: Router) {
+    const previousUrl = localStorage.getItem('previousUrl');
+
+    if (previousUrl) {
+      router.navigateByUrl(previousUrl);
+      localStorage.removeItem('previousUrl');
+    }
   }
+
 }

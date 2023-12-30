@@ -7,6 +7,9 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Document } from '../Objects/Document';
 import { DocumentService } from '../Service/document.service';
 import { SharedService } from '../Service/shared.service';
+import { StorageService } from '../Service/storage.service';
+import { StaffService } from '../Service/staff.service';
+import { Staff } from '../Objects/Staff';
 declare const $: any;
 @Component({
   selector: 'app-managepets',
@@ -22,6 +25,8 @@ export class ManagepetsComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private documentService:DocumentService,
     private sharedService:SharedService,
+    private storageService:StorageService,
+    private staffService:StaffService
   ) {}
 pets: Pet[] = [];
 spinner_flag: boolean = false;
@@ -31,8 +36,9 @@ images: any[] = [];
 document:Document=new Document();
 PetDocuments:Document[]=[];
 index:number=0;
+currStaff:Staff=this.storageService.getStaff();
 ngOnInit(): void {
-    this.petService.getAllPetsInShelter(5).subscribe(
+  this.petService.getAllPetsInShelter(this.currStaff.staff.shelterId).subscribe(
       (data) => {
         this.pets = data;
         for(let i=0;i<this.pets.length;i++){
@@ -44,6 +50,8 @@ ngOnInit(): void {
         console.log(error);
       }
     );
+
+    
   }
   close() {
     $('#exampleModalCenter').modal('hide');

@@ -35,6 +35,7 @@ export class ManageShelterComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    console.log(this.staff)
     this.shelterForm.patchValue({
       shelterName: this.Shelter.shelterName,
       shelterPhone: this.Shelter.shelterPhone,

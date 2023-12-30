@@ -42,11 +42,14 @@ export class AddShelterComponent implements OnInit {
     this.loading = true;
     this.service.saveShelter(this.Shelter,this.staff.staffId).subscribe((data) => {
       if (data != null) {
+        this.staff.shelter=data
+        this.storage.saveStaff(this.staff)
         this.loading = false;
         alert("Shelter Added Successfully");
         this.Shelter.shelterAddress=''
         this.Shelter.shelterName=''
         this.Shelter.shelterPhone=''
+        window.location.reload();
         
       } else {
         this.loading = false;

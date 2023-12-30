@@ -30,6 +30,9 @@ export class StaffService {
   UpdateStaffMember(newstaff:Staff):Observable<any>{
     return this.http.put<any>(baseurl+'/updateStaff',newstaff)
   }
+  getSherlterIdByStaffId(staffId:any):Observable<any>{
+    return this.http.get<any>(baseurl+'/getShelterOfStaff',{params:{staffId:staffId}})
+  }
     
 
 
