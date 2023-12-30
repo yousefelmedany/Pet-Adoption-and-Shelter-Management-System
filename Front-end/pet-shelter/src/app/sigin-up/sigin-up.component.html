@@ -1,41 +1,126 @@
 <div class="container">
-    <div class="image"></div>
-    <div>
-        <h2>Sign Up</h2>
-        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-            <label for="role">Select Role:</label>
-            <button class="role_btn" type="button" (click)="onChangeRole('MANAGER')">Manager</button>
-            <button class="role_btn" type="button" *ngIf="!noShelter" (click)="onChangeRole('STAFF')">Staff</button>
-            <button class="role_btn" type="button" (click)="onChangeRole('ADOPTER')">Adopter</button>
+  <div class="image"></div>
+  <div>
+    <h2>Sign Up</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <table>
+        <tr class="role_section">
+          <td><label for="role">Select Role:</label></td>
+          <td>
+            <button
+              class="role_btn"
+              type="button"
+              (click)="onChangeRole('MANAGER')"
+            >
+              Manager
+            </button>
+            <button
+              class="role_btn"
+              type="button"
+              *ngIf="!noShelter"
+              (click)="onChangeRole('STAFF')"
+            >
+              Staff
+            </button>
+            <button
+              class="role_btn"
+              type="button"
+              (click)="onChangeRole('ADOPTER')"
+            >
+              Adopter
+            </button>
+          </td>
+        </tr>
+        <hr />
+        <tr>
+          <td><label for="username">Name:</label></td>
+          <td>
+            <input
+              type="text"
+              formControlName="username"
+              placeholder="Enter username"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Enter email"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="password">Password:</label></td>
+          <td>
+            <input
+              type="password"
+              formControlName="password"
+              placeholder="Enter password"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="address">Address:</label></td>
+          <td>
+            <input
+              type="text"
+              formControlName="address"
+              placeholder="Enter address"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="phone">Phone:</label></td>
+          <td>
+            <input
+              type="text"
+              formControlName="phone"
+              placeholder="Enter phone"
+            />
+          </td>
+        </tr>
+        <tr *ngIf="selectedRole !== 'ADOPTER'">
+          <td><label for="birthdate">Birthdate:</label></td>
+          <td>
+            <input type="date" formControlName="birthdate" required />
+          </td>
+        </tr>
+        <tr *ngIf="selectedRole === 'STAFF'">
+          <td><label for="shelter">Shelter:</label></td>
+          <td>
+            <select formControlName="shelter" required>
+              <option
+                *ngFor="let shelter of shelters"
+                [value]="shelter.shelterId"
+              >
+                {{ shelter.shelterName }}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <button
+        type="submit"
+        class="btn btn-success btn-lg btn-block"
+        [disabled]="signupForm.invalid"
+        [class.disabled]="signupForm.invalid || loading"
+      >
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
 
-            <label for="username">Name:</label>
-            <input type="text" formControlName="username" placeholder="Enter username" >
-            <label for="email">Email:</label>
-            <input type="email" formControlName="email" placeholder="Enter email" >
-            <label for="password">Password:</label>
-            <input type="password" formControlName="password" placeholder="Enter password" >
-            <label for="address">Address:</label>
-            <input type="text" formControlName="address" placeholder="Enter address" >
-            <label for="phone">Phone:</label>
-            <input type="text" formControlName="phone" placeholder="Enter phone" >
-            <label *ngIf="selectedRole !== 'ADOPTER'" for="birthdate">Birthdate:</label>
-            <input type="date" formControlName="birthdate" *ngIf="selectedRole !== 'ADOPTER'" required>
-            <div *ngIf="selectedRole === 'STAFF'">
-                <label for="shelter">Shelter:</label>
-                <select formControlName="shelter" required>
-                    <option *ngFor="let shelter of shelters" [value]="shelter.shelterId">{{shelter.shelterName}}</option>
-                </select>
-            </div>
-            <br>
-            <button type="submit" [disabled]="signupForm.invalid" [class.disabled]="signupForm.invalid || loading">
-                
-              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                
-                Sign Up</button>
-        </form>
-        <p id="signup">
-            Already a member?
-            <a routerLink="/signin">Sign in now</a>
-        </p>
-    </div>
+        Sign Up
+      </button>
+    </form>
+    <p id="signup">
+      Already a member?
+      <a routerLink="/signin">Sign in now</a>
+    </p>
+  </div>
 </div>
